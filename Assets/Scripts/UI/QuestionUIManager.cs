@@ -54,15 +54,18 @@ public class QuestionUIManager : MonoBehaviour
 
     public void CloseQuestionUI(bool questionAnswered)
     {
+        // Audience Member Handling
+        if (interactingAudienceMember != null)
+        {
+            interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
+            interactingAudienceMember = null;
+        }
+        
         if (questionAnswered)
         {
             // Add a marble
             LevelManager.instance.SpawnMarble();
         }
-
-        // Audience Member Handling
-        interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
-        interactingAudienceMember = null;
 
         // Close UI
         theUI.SetActive(false);
