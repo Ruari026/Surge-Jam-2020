@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AudienceMemberController : MonoBehaviour
 {
+    // State Handling
     [SerializeField]
     private AudienceStates startState;
     private AudienceState currentState;
@@ -11,6 +12,11 @@ public class AudienceMemberController : MonoBehaviour
     private AudienceIdleState idleState;
     private AudienceFocusedState focusedState;
     private AudienceExitState exitState;
+
+    // Timer
+    public float currentTime = 0.0f;
+    [SerializeField]
+    public float maxTime = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -52,5 +58,24 @@ public class AudienceMemberController : MonoBehaviour
         }
 
         currentState.StartState(this);
+    }
+
+    public void ChangeState(string newState)
+    {
+        switch(newState)
+        {
+            case "Idle":
+                currentState = idleState;
+                break;
+
+            case "Focused":
+                currentState = focusedState;
+                break;
+
+
+            case "Exit":
+                currentState = exitState;
+                break;
+        }
     }
 }
