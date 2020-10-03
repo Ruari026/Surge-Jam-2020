@@ -22,6 +22,10 @@ public class QuestionUIManager : MonoBehaviour
         }
     }
 
+    private AudienceMemberController interactingAudienceMember;
+
+    [SerializeField]
+    private GameObject theUI;
     [SerializeField]
     private Text questionText;
     [SerializeField]
@@ -39,16 +43,11 @@ public class QuestionUIManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void OpenQuestionUI(AudienceMemberController openingAudienceMember)
     {
-        
-    }
+        interactingAudienceMember = openingAudienceMember;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        theUI.SetActive(true);
     }
 
     public void CloseQuestionUI(bool questionAnswered)
@@ -64,6 +63,7 @@ public class QuestionUIManager : MonoBehaviour
         }
 
         // Close UI
+        theUI.SetActive(false);
     }
 
     public void SetUIFields(QuestionAnswersScriptableObject set)

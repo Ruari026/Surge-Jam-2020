@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class AudienceIdleState : AudienceState
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void StartState(AudienceMemberController theAudienceMember)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void UpdateState(AudienceMemberController theAudienceMember)
     {
-        
+        theAudienceMember.currentTime += Time.deltaTime;
+        if (theAudienceMember.currentTime > theAudienceMember.maxTime)
+        {
+
+        }
     }
 }
