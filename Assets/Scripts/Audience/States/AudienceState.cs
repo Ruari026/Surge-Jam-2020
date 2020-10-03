@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudienceState : MonoBehaviour
+public class AudienceState
 {
     public virtual void StartState(AudienceMemberController theAudienceMember)
     {
