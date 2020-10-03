@@ -64,11 +64,6 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void SpawnAudienceMember()
-    {
-        
-    }
-
     public void SpawnMarble()
     {
         GameObject newMarble = Instantiate(marblePrefab, this.transform);
