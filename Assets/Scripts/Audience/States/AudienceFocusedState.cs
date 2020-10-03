@@ -10,6 +10,10 @@ public class AudienceFocusedState : AudienceState
         theAudienceMember.transform.position = targetPos;
 
         QuestionUIManager.instance.OpenQuestionUI(theAudienceMember);
+
+
+        theAudienceMember.questionLeft.SetActive(false);
+        theAudienceMember.questionRight.SetActive(false);
     }
 
     public override void UpdateState(AudienceMemberController theAudienceMember)
@@ -17,7 +21,10 @@ public class AudienceFocusedState : AudienceState
         theAudienceMember.currentTime += Time.deltaTime;
         if (theAudienceMember.currentTime > theAudienceMember.maxTime)
         {
+            LevelManager.instance.IncreaseInstability();
+            theAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
 
+            QuestionUIManager.instance.CloseQuestionUI(false);
         }
     }
 }

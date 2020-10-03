@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public class LevelManager : MonoBehaviour
     private float currentSpawnTime = 0;
     [SerializeField]
     private float timeToNextSpawn = 1.0f;
+
+    // Handling Platform
+    [SerializeField]
+    private PlatformController thePlatform;
 
     // Handling Marbles
     [SerializeField]
@@ -68,5 +73,15 @@ public class LevelManager : MonoBehaviour
     {
         GameObject newMarble = Instantiate(marblePrefab, this.transform);
         newMarble.transform.position = marbleSpawnPos.transform.position;
+    }
+
+    public void IncreaseInstability()
+    {
+        thePlatform.instabilityAmount *= 2;
+    }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("Game_Over");
     }
 }

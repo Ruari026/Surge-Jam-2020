@@ -14,13 +14,21 @@ public class AudienceMemberController : MonoBehaviour
     private AudienceFocusedState focusedState;
     private AudienceExitState exitState;
 
+    // Visuals
+    [Header("Audience Member Visuals")]
+    public GameObject[] possibleIdleSprites;
+    public GameObject focusedSprite;
+
     // Timer
+    [Header("Question Timer")]
     public float currentTime = 0.0f;
     [SerializeField]
     public float maxTime = 1.0f;
 
-    // Interaction-
-    public GameObject questionUI;
+    // Interaction
+    [Header("Audience Member UI")]
+    public GameObject questionLeft;
+    public GameObject questionRight;
     public QuestionAnswersScriptableObject theQuestion;
 
     // Start is called before the first frame update

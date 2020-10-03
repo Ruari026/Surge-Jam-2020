@@ -8,15 +8,16 @@ public class PlatformController : MonoBehaviour
     private GameObject thePlatform;
     [SerializeField]
     private float maxAngle;
+    
+    [Range(0.05f, 1.0f)]
+    public float instabilityAmount = 0;
 
-    [SerializeField]
-    [Range(0.0f, 1.0f)]
-    private float instabilityAmount = 0;
+    private Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        offset = this.transform.eulerAngles;
     }
 
     // Update is called once per frame
@@ -54,6 +55,6 @@ public class PlatformController : MonoBehaviour
         if (direction.magnitude > 1)
             direction.Normalize();
 
-        thePlatform.transform.rotation = Quaternion.Lerp(thePlatform.transform.rotation, Quaternion.Euler(direction * maxAngle), Time.deltaTime);
+        thePlatform.transform.rotation = Quaternion.Lerp(thePlatform.transform.rotation, Quaternion.Euler((direction * maxAngle) + offset), Time.deltaTime);
     }
 }

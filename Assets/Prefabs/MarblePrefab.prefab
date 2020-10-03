@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 616591089411258424}
   - component: {fileID: 616591089411258425}
   - component: {fileID: 616591089411258426}
+  - component: {fileID: -4953308689332521884}
   m_Layer: 0
   m_Name: MarblePrefab
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 616591089411258427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -110,3 +111,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &-4953308689332521884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616591089411258427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f5a7b9e32239047b1763c8e0b07c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleMaterials:
+  - {fileID: 2100000, guid: 1a401494a07b08b43802d9cc1fd323b0, type: 2}
+  - {fileID: 2100000, guid: 58a58ca1105dcb64faf43f62ef5b91ac, type: 2}
+  - {fileID: 2100000, guid: 05d196b8d5769b8489cf941525588983, type: 2}
+  - {fileID: 2100000, guid: 8620f33ee3330604eb0a2f5341224309, type: 2}
+  oobThreshold: -1
