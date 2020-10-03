@@ -246,7 +246,7 @@ MonoBehaviour:
   maxTime: 10
   questionLeft: {fileID: 4654544626167112102}
   questionRight: {fileID: 100456895117831820}
-  theQuestion: {fileID: 11400000, guid: 92b417d7de97e974c8db57767b588ced, type: 2}
+  theQuestion: {fileID: 11400000, guid: 148dfe37c0f29214eb9f07b9faddf0f5, type: 2}
 --- !u!1 &2651001574825087548
 GameObject:
   m_ObjectHideFlags: 0
