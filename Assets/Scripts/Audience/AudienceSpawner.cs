@@ -27,14 +27,8 @@ public class AudienceSpawner : MonoBehaviour
     private GameObject audienceMemberPrefab;
 
     [Header("Spawn Bounds")]
-    [SerializeField]
-    private Vector3 maxPos;
-    [SerializeField]
-    private float maxWidth = 5;
-    [SerializeField]
-    private Vector3 minPos;
-    [SerializeField]
-    private float minWidth = 1;
+    public Transform[] spawnRows;
+    public float[] rowWidths;
 
     private void OnEnable()
     {
@@ -54,26 +48,30 @@ public class AudienceSpawner : MonoBehaviour
         
     }
 
-    private void DetermineSpawnBounds()
-    {
-
-    }
-
     public void SpawnAudienceMember()
     {
         GameObject newAudienceMember = Instantiate(audienceMemberPrefab, this.transform);
 
         Vector3 distance = Vector3.zero;
-        
+
         // Depth Position
-        distance.y = Random.Range(minPos.y, maxPos.y);
+        int pickedRow = Random.Range(0, spawnRows.Length);
+        distance = spawnRows[pickedRow].position;
 
         // Horizontal Position
-        float amount = (distance.y - minPos.y) / (maxPos.y - minPos.y);
-        float range = Mathf.Lerp(minWidth, maxWidth, amount);
+        float range = rowWidths[pickedRow];
         distance.x = Random.Range(-range, range);
 
-        newAudienceMember.transform.localPosition = distance;
+        newAudienceMember.transform.position = distance;
         newAudienceMember.transform.rotation = Quaternion.identity;
+    }
+
+    private void OnDrawGizmos()
+    {
+        for (int i = 0; i < spawnRows.Length; i++)
+        {
+            Debug.DrawLine(spawnRows[i].position, spawnRows[i].position + (Vector3.right * rowWidths[i]));
+            Debug.DrawLine(spawnRows[i].position, spawnRows[i].position - (Vector3.right * rowWidths[i]));
+        }
     }
 }

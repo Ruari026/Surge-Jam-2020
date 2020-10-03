@@ -243,7 +243,7 @@ MonoBehaviour:
   - {fileID: 8376785675520463749}
   focusedSprite: {fileID: 6333469675429600621}
   currentTime: 0
-  maxTime: 2.5
+  maxTime: 10
   questionLeft: {fileID: 4654544626167112102}
   questionRight: {fileID: 100456895117831820}
   theQuestion: {fileID: 11400000, guid: 92b417d7de97e974c8db57767b588ced, type: 2}

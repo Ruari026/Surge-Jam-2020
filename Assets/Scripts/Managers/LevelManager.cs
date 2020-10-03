@@ -27,8 +27,12 @@ public class LevelManager : MonoBehaviour
 
     // Handling Audience
     private float currentSpawnTime = 0;
+    private float currentLevelTime = 0;
     [SerializeField]
+    private float baseSpawnTime = 1.0f;
     private float timeToNextSpawn = 1.0f;
+    [SerializeField]
+    private AnimationCurve spawnTimeCurve;
 
     // Handling Platform
     [SerializeField]
