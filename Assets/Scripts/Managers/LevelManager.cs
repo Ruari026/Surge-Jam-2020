@@ -25,9 +25,8 @@ public class LevelManager : MonoBehaviour
     // Handling GameState
 
     // Handling Audience
-    [SerializeField]
-    private GameObject audiencePrefab;
     private float currentSpawnTime = 0;
+    [SerializeField]
     private float timeToNextSpawn = 1.0f;
 
     // Handling Marbles
@@ -60,13 +59,14 @@ public class LevelManager : MonoBehaviour
         currentSpawnTime += Time.deltaTime;
         if (currentSpawnTime > timeToNextSpawn)
         {
-            SpawnAudienceMember();
+            currentSpawnTime = 0;
+            AudienceSpawner.instance.SpawnAudienceMember();
         }
     }
 
     private void SpawnAudienceMember()
     {
-
+        
     }
 
     public void SpawnMarble()
