@@ -10,8 +10,7 @@ public class AudienceFocusedState : AudienceState
         theAudienceMember.transform.position = targetPos;
 
         QuestionUIManager.instance.OpenQuestionUI(theAudienceMember);
-
-
+        
         theAudienceMember.questionLeft.SetActive(false);
         theAudienceMember.questionRight.SetActive(false);
     }
