@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ruari_Testing.unity
     guid: c8525c66e3950244b888fc8db6707cdc
+  - enabled: 1
+    path: Assets/Scenes/Game_Over.unity
+    guid: 7eb1287b666492341b0701c6ca0a8d36
   m_configObjects: {}
