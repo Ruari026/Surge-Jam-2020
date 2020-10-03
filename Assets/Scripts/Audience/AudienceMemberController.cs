@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudienceMemberController : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class AudienceMemberController : MonoBehaviour
     public float currentTime = 0.0f;
     [SerializeField]
     public float maxTime = 1.0f;
+
+    // Interaction-
+    public GameObject questionUI;
+    public QuestionAnswersScriptableObject theQuestion;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +67,8 @@ public class AudienceMemberController : MonoBehaviour
 
     public void ChangeState(string newState)
     {
+        Debug.Log("Changing States: AudienceState-" + newState);
+
         switch(newState)
         {
             case "Idle":
@@ -77,5 +84,7 @@ public class AudienceMemberController : MonoBehaviour
                 currentState = exitState;
                 break;
         }
+
+        currentState.StartState(this);
     }
 }

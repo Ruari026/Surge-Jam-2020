@@ -47,6 +47,8 @@ public class QuestionUIManager : MonoBehaviour
     {
         interactingAudienceMember = openingAudienceMember;
 
+        SetUIFields(interactingAudienceMember.theQuestion);
+
         theUI.SetActive(true);
     }
 
@@ -57,10 +59,10 @@ public class QuestionUIManager : MonoBehaviour
             // Add a marble
             LevelManager.instance.SpawnMarble();
         }
-        else
-        {
-            // Increase platform instability
-        }
+
+        // Audience Member Handling
+        interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
+        interactingAudienceMember = null;
 
         // Close UI
         theUI.SetActive(false);

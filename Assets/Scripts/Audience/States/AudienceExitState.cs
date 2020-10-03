@@ -6,7 +6,7 @@ public class AudienceExitState : AudienceState
 {
     public override void StartState(AudienceMemberController theAudienceMember)
     {
-
+        GameObject.Destroy(theAudienceMember.gameObject);
     }
 
     public override void UpdateState(AudienceMemberController theAudienceMember)
