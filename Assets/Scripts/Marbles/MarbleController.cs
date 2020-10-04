@@ -6,6 +6,7 @@ public class MarbleController : MonoBehaviour
 {
     [SerializeField]
     private Material[] possibleMaterials;
+    [SerializeField]
     private Transform oobPlane;
 
     // Start is called before the first frame update
@@ -21,7 +22,7 @@ public class MarbleController : MonoBehaviour
     void Update()
     {
         Vector3 pos = this.transform.position;
-        if (pos.z < oobPlane.position.y)
+        if (pos.y < oobPlane.position.y)
         {
             LevelManager.instance.EndGame();
         }

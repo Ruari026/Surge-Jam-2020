@@ -41,8 +41,8 @@ public class PlatformController : MonoBehaviour
         Vector3 inputDirection = Vector3.zero;
 #if UNITY_EDITOR
         // Editor Input
-        inputDirection.z = -Input.GetAxis("Horizontal");
-        inputDirection.x = Input.GetAxis("Vertical");
+        inputDirection.z = Input.GetAxis("Horizontal");
+        inputDirection.x = -Input.GetAxis("Vertical");
 #endif
         if (inputDirection.magnitude > 1.0f)
             inputDirection.Normalize();

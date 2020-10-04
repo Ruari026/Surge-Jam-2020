@@ -18,6 +18,10 @@ public class AudienceMemberController : MonoBehaviour
     [Header("Audience Member Visuals")]
     public GameObject[] possibleIdleSprites;
     public GameObject focusedSprite;
+    public GameObject successSprite;
+    public GameObject failSprite;
+    public Color[] possibleColors;
+    public Animator animController;
 
     // Timer
     [Header("Question Timer")]
@@ -29,7 +33,11 @@ public class AudienceMemberController : MonoBehaviour
     [Header("Audience Member UI")]
     public GameObject questionLeft;
     public GameObject questionRight;
+
+    // Question
+    [Header("Question Handling")]
     public QuestionAnswersScriptableObject theQuestion;
+    public QuestionAnswersScriptableObject[] possibleQuestions;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +61,30 @@ public class AudienceMemberController : MonoBehaviour
     State Handling
     ====================================================================================================
     */
-    public void ChangeState(AudienceStates newState)
+    public void ChangeState(string newState)
+    {
+        Debug.Log("Changing States: AudienceState-" + newState);
+
+        switch (newState)
+        {
+            case "Idle":
+                currentState = idleState;
+                break;
+
+            case "Focused":
+                currentState = focusedState;
+                break;
+
+
+            case "Exit":
+                currentState = exitState;
+                break;
+        }
+        
+        currentState.StartState(this);
+    }
+
+    public void ChangeState(AudienceStates newState, bool startState = true)
     {
         switch(newState)
         {
@@ -70,10 +101,13 @@ public class AudienceMemberController : MonoBehaviour
                 break;
         }
 
-        currentState.StartState(this);
+        if (startState)
+        {
+            currentState.StartState(this);
+        }
     }
 
-    public void ChangeState(string newState)
+    public void ChangeState(string newState, bool startState = true)
     {
         Debug.Log("Changing States: AudienceState-" + newState);
 
@@ -93,6 +127,9 @@ public class AudienceMemberController : MonoBehaviour
                 break;
         }
 
-        currentState.StartState(this);
+        if (startState)
+        {
+            currentState.StartState(this);
+        }
     }
 }

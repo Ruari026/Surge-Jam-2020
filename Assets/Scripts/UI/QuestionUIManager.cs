@@ -24,12 +24,27 @@ public class QuestionUIManager : MonoBehaviour
 
     private AudienceMemberController interactingAudienceMember;
 
+    [Header("UI Parents")]
     [SerializeField]
     private GameObject theUI;
     [SerializeField]
+    private GameObject twoAnswerUI;
+    [SerializeField]
+    private GameObject threeAnswerUI;
+    [SerializeField]
+    private GameObject fourAnswerUI;
+
+    [Header("Individual Answers")]
+    [SerializeField]
     private Text questionText;
     [SerializeField]
-    private Text[] answerTexts;
+    private Text[] answerOneTexts;
+    [SerializeField]
+    private Text[] answerTwoTexts;
+    [SerializeField]
+    private Text[] answerThreeTexts;
+    [SerializeField]
+    private Text[] answerFourTexts;
 
     private void OnEnable()
     {
@@ -43,11 +58,27 @@ public class QuestionUIManager : MonoBehaviour
         }
     }
 
-    public void OpenQuestionUI(AudienceMemberController openingAudienceMember)
+    public bool OpenQuestionUI(AudienceMemberController openingAudienceMember)
     {
-        interactingAudienceMember = openingAudienceMember;
+        if (interactingAudienceMember == null)
+        {
+            interactingAudienceMember = openingAudienceMember;
 
-        SetUIFields(interactingAudienceMember.theQuestion);
+            SetUIFields(interactingAudienceMember.theQuestion);
+
+            StartCoroutine(DelayUIOpen());
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    private IEnumerator DelayUIOpen()
+    {
+        yield return new WaitForSeconds(1.0f);
 
         theUI.SetActive(true);
     }
@@ -73,11 +104,53 @@ public class QuestionUIManager : MonoBehaviour
 
     public void SetUIFields(QuestionAnswersScriptableObject set)
     {
+        // Updating UI For Question
         questionText.text = set.question;
 
-        for (int i = 0; i < answerTexts.Length; i++)
+        for (int i = 0; i < set.answers.Length; i++)
         {
-            answerTexts[i].text = set.answers[i];
+            switch (i)
+            {
+                case 0:
+                    foreach (Text t in answerOneTexts)
+                        t.text = set.answers[i];
+                    break;
+
+                case 1:
+                    foreach (Text t in answerTwoTexts)
+                        t.text = set.answers[i];
+                    break;
+
+                case 2:
+                    foreach (Text t in answerThreeTexts)
+                        t.text = set.answers[i];
+                    break;
+
+                case 3:
+                    foreach (Text t in answerFourTexts)
+                        t.text = set.answers[i];
+                    break;
+            }
+        }
+
+        // Showing Relevant UI
+        twoAnswerUI.SetActive(false);
+        threeAnswerUI.SetActive(false);
+        fourAnswerUI.SetActive(false);
+
+        switch (set.answers.Length)
+        {
+            case 2:
+                twoAnswerUI.SetActive(true);
+                break;
+
+            case 3:
+                threeAnswerUI.SetActive(true);
+                break;
+
+            case 4:
+                fourAnswerUI.SetActive(true);
+                break;
         }
     }
 }

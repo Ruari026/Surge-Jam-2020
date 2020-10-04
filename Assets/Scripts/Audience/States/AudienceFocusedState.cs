@@ -6,13 +6,29 @@ public class AudienceFocusedState : AudienceState
 {
     public override void StartState(AudienceMemberController theAudienceMember)
     {
-        Vector3 targetPos = GameObject.FindGameObjectWithTag("FocusedPoint").transform.position;
-        theAudienceMember.transform.position = targetPos;
+        if (QuestionUIManager.instance.OpenQuestionUI(theAudienceMember))
+        {
+            theAudienceMember.StartCoroutine(this.StartAnim(theAudienceMember));
+        }
+        else
+        {
+            theAudienceMember.ChangeState(AudienceStates.AUDIENCE_IDLE, false);
+        }
+    }
 
-        QuestionUIManager.instance.OpenQuestionUI(theAudienceMember);
+    private IEnumerator StartAnim(AudienceMemberController theAudienceMember)
+    {
+        theAudienceMember.animController.SetTrigger("Hide");
         
         theAudienceMember.questionLeft.SetActive(false);
         theAudienceMember.questionRight.SetActive(false);
+
+        yield return new WaitForSeconds(0.5f);
+
+        Vector3 targetPos = GameObject.FindGameObjectWithTag("FocusedPoint").transform.position;
+        theAudienceMember.transform.position = targetPos;
+        
+        theAudienceMember.animController.SetTrigger("Show");
     }
 
     public override void UpdateState(AudienceMemberController theAudienceMember)
