@@ -24,8 +24,8 @@ public class AudienceIdleState : AudienceState
             g.GetComponent<SpriteRenderer>().color = theAudienceMember.possibleColors[pickedColor];
         }
         theAudienceMember.focusedSprite.GetComponent<SpriteRenderer>().color = theAudienceMember.possibleColors[pickedColor];
-        //theAudienceMember.successSprite.GetComponent<SpriteRenderer>().color = theAudienceMember.possibleColors[pickedColor];
-        //theAudienceMember.failSprite.GetComponent<SpriteRenderer>().color = theAudienceMember.possibleColors[pickedColor];
+        theAudienceMember.successSprite.GetComponent<SpriteRenderer>().color = theAudienceMember.possibleColors[pickedColor];
+        theAudienceMember.failSprite.GetComponent<SpriteRenderer>().color = theAudienceMember.possibleColors[pickedColor];
 
         // Randomize Idle Sprite
         int pickedSprite = Random.Range(0, theAudienceMember.possibleIdleSprites.Length);

@@ -12,7 +12,7 @@ public class MarbleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int pickedMaterial = Random.Range(0, possibleMaterials.Length - 1);
+        int pickedMaterial = Random.Range(0, possibleMaterials.Length);
         this.GetComponent<Renderer>().material = possibleMaterials[pickedMaterial];
 
         oobPlane = GameObject.FindGameObjectWithTag("Out Of Bounds").transform;

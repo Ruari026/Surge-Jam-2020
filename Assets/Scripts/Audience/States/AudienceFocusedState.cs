@@ -30,6 +30,12 @@ public class AudienceFocusedState : AudienceState
         Vector3 targetPos = GameObject.FindGameObjectWithTag("FocusedPoint").transform.position;
         theAudienceMember.transform.position = targetPos;
         
+        foreach(GameObject g in theAudienceMember.possibleIdleSprites)
+        {
+            g.SetActive(false);
+        }
+        theAudienceMember.focusedSprite.SetActive(true);
+
         theAudienceMember.animController.SetTrigger("Show");
     }
 
@@ -54,6 +60,7 @@ public class AudienceFocusedState : AudienceState
         if (theAudienceMember.currentTime > theAudienceMember.maxTime)
         {
             LevelManager.instance.IncreaseInstability();
+
             theAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
 
             QuestionUIManager.instance.CloseQuestionUI(false);

@@ -23,7 +23,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    // Handling Audience
+    [Header("Player Variations")]
+    [SerializeField]
+    private GameObject[] possiblePlayerCharacters;
+
+    [Header("Audience Spawning")]
     private float currentSpawnTime = 0;
     private float currentLevelTime = 0;
     [SerializeField]
@@ -35,13 +39,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private AnimationCurve spawnTimeCurve;
 
-    // Handling Platform
+    [Header("Platform Handling")]
     [SerializeField]
     private PlatformController thePlatform;
     [SerializeField]
     private float instabilityIncreaseRate = 2.0f;
 
-    // Handling Marbles
+    [Header("Marble Spawning")]
     [SerializeField]
     private GameObject marblePrefab;
     [SerializeField]
@@ -63,6 +67,19 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         PersistantData.instance.score = 0;
+
+        int pickedPlayerCharacter = Random.Range(0, possiblePlayerCharacters.Length);
+        for (int i = 0; i < possiblePlayerCharacters.Length; i++)
+        {
+            if (i == pickedPlayerCharacter)
+            {
+                possiblePlayerCharacters[i].SetActive(true);
+            }
+            else
+            {
+                possiblePlayerCharacters[i].SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame

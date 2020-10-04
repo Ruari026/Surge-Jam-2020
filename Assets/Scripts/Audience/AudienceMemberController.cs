@@ -28,6 +28,7 @@ public class AudienceMemberController : MonoBehaviour
     public float currentTime = 0.0f;
     [SerializeField]
     public float maxTime = 1.0f;
+    public bool success = false;
 
     // Interaction
     [Header("Audience Member UI")]
