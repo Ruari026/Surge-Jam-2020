@@ -1,18 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private GameObject pauseParent;
+    [SerializeField]
+    private GameObject pauseMenu;
+    [SerializeField]
+    private GameObject settingsMenu;
+
+    public void PauseGame()
     {
-        
+        Time.timeScale = 0.0f;
+        pauseParent.SetActive(true);
+        pauseMenu.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResumeGame()
     {
-        
+        Time.timeScale = 1.0f;
+        pauseParent.SetActive(false);
+    }
+
+    public void ReturnToMenu()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("Main_Menu");
     }
 }

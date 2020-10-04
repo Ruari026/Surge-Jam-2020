@@ -60,6 +60,20 @@ public class AudienceIdleState : AudienceState
         if (started)
         {
             theAudienceMember.currentTime += Time.deltaTime;
+
+            // Updating UI
+            float pos = theAudienceMember.currentTime / theAudienceMember.maxTime;
+            Vector3 newScale = Vector3.one;
+            newScale.x = pos;
+            Color newColor = Color.Lerp(Color.green, Color.red, pos);
+
+            theAudienceMember.leftFill.transform.localScale = newScale;
+            theAudienceMember.leftFill.color = newColor;
+
+            theAudienceMember.rightFill.transform.localScale = newScale;
+            theAudienceMember.rightFill.color = newColor;
+
+            // Checking Exit Condition
             if (theAudienceMember.currentTime > theAudienceMember.maxTime)
             {
                 LevelManager.instance.IncreaseInstability();

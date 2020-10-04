@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlatformController : MonoBehaviour
 {
@@ -8,16 +9,25 @@ public class PlatformController : MonoBehaviour
     private GameObject thePlatform;
     [SerializeField]
     private float maxAngle;
+
+    private Vector3 startOrientation;
+    [SerializeField]
+    private Text gyroTextStart;
+    [SerializeField]
+    private Text gyroTextNow;
     
-    [Range(0.05f, 1.0f)]
     public float instabilityAmount = 0;
 
     private Vector3 offset;
+    [SerializeField]
+    private 
 
     // Start is called before the first frame update
     void Start()
     {
         offset = this.transform.eulerAngles;
+
+        startOrientation = Input.acceleration;
     }
 
     // Update is called once per frame
@@ -39,11 +49,23 @@ public class PlatformController : MonoBehaviour
 
         // Handling User Input
         Vector3 inputDirection = Vector3.zero;
+
+#if UNITY_IOS || UNITY_ANDROID
+        // Gyroscope Input
+        Vector3 gyroAttitude = Input.acceleration;
+        inputDirection.z = -(gyroAttitude.x - startOrientation.x);
+        inputDirection.x = (gyroAttitude.y - startOrientation.y);
+
+        gyroTextStart.text = "Gyro Start: " + startOrientation.ToString();
+        gyroTextNow.text = "Gyro Now: " + Input.acceleration.ToString();
+#endif
+
 #if UNITY_EDITOR
         // Editor Input
-        inputDirection.z = Input.GetAxis("Horizontal");
-        inputDirection.x = -Input.GetAxis("Vertical");
+        inputDirection.z = -Input.GetAxis("Horizontal");
+        inputDirection.x = Input.GetAxis("Vertical");
 #endif
+
         if (inputDirection.magnitude > 1.0f)
             inputDirection.Normalize();
 

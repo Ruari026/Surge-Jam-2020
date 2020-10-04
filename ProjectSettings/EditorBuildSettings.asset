@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main_Menu.unity
     guid: 0ea84baa94d4fbb4890d7d2ebf01f1d0
   - enabled: 1
-    path: Assets/Scenes/Ruari_Testing.unity
+    path: Assets/Scenes/Gameplay.unity
     guid: c8525c66e3950244b888fc8db6707cdc
   - enabled: 1
     path: Assets/Scenes/Game_Over.unity
