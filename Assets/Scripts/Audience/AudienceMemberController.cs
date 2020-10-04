@@ -32,7 +32,9 @@ public class AudienceMemberController : MonoBehaviour
     // Interaction
     [Header("Audience Member UI")]
     public GameObject questionLeft;
+    public Image leftFill;
     public GameObject questionRight;
+    public Image rightFill;
 
     // Question
     [Header("Question Handling")]

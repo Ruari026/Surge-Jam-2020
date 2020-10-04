@@ -23,13 +23,14 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    // Handling GameState
-
     // Handling Audience
     private float currentSpawnTime = 0;
     private float currentLevelTime = 0;
     [SerializeField]
-    private float baseSpawnTime = 1.0f;
+    private float baseSpawnTime = 5.0f;
+    [SerializeField]
+    private float maxSpawnReduction = 4.5f;
+    [SerializeField]
     private float timeToNextSpawn = 1.0f;
     [SerializeField]
     private AnimationCurve spawnTimeCurve;
@@ -37,6 +38,8 @@ public class LevelManager : MonoBehaviour
     // Handling Platform
     [SerializeField]
     private PlatformController thePlatform;
+    [SerializeField]
+    private float instabilityIncreaseRate = 2.0f;
 
     // Handling Marbles
     [SerializeField]
@@ -59,7 +62,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PersistantData.instance.score = 0;
     }
 
     // Update is called once per frame
@@ -69,6 +72,8 @@ public class LevelManager : MonoBehaviour
         if (currentSpawnTime > timeToNextSpawn)
         {
             currentSpawnTime = 0;
+            timeToNextSpawn = baseSpawnTime - spawnTimeCurve.Evaluate((float)PersistantData.instance.score * 0.1f) * maxSpawnReduction;
+
             AudienceSpawner.instance.SpawnAudienceMember();
         }
     }
@@ -77,11 +82,13 @@ public class LevelManager : MonoBehaviour
     {
         GameObject newMarble = Instantiate(marblePrefab, this.transform);
         newMarble.transform.position = marbleSpawnPos.transform.position;
+
+        PersistantData.instance.score++;
     }
 
     public void IncreaseInstability()
     {
-        thePlatform.instabilityAmount *= 2;
+        thePlatform.instabilityAmount *= instabilityIncreaseRate;
     }
 
     public void EndGame()

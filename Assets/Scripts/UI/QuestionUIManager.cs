@@ -34,6 +34,10 @@ public class QuestionUIManager : MonoBehaviour
     [SerializeField]
     private GameObject fourAnswerUI;
 
+    [Header("Question Timer")]
+    [SerializeField]
+    private Image timerBar;
+
     [Header("Individual Answers")]
     [SerializeField]
     private Text questionText;
@@ -81,6 +85,20 @@ public class QuestionUIManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         theUI.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (interactingAudienceMember != null)
+        {
+            float pos = interactingAudienceMember.currentTime / interactingAudienceMember.maxTime;
+            Vector3 newScale = Vector3.one;
+            newScale.x = pos;
+            Color newColor = Color.Lerp(Color.green, Color.red, pos);
+
+            timerBar.transform.localScale = newScale;
+            timerBar.color = newColor;
+        }
     }
 
     public void CloseQuestionUI(bool questionAnswered)
