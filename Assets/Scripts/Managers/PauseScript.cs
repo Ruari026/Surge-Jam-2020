@@ -16,7 +16,9 @@ public class PauseScript : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         pauseParent.SetActive(true);
+
         pauseMenu.SetActive(true);
+        settingsMenu.SetActive(false);
     }
 
     public void ResumeGame()
