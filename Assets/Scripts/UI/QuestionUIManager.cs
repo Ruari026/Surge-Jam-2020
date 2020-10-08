@@ -132,22 +132,22 @@ public class QuestionUIManager : MonoBehaviour
             {
                 case 0:
                     foreach (Text t in answerOneTexts)
-                        t.text = set.answers[i];
+                        t.text = set.answers[i].answer;
                     break;
 
                 case 1:
                     foreach (Text t in answerTwoTexts)
-                        t.text = set.answers[i];
+                        t.text = set.answers[i].answer;
                     break;
 
                 case 2:
                     foreach (Text t in answerThreeTexts)
-                        t.text = set.answers[i];
+                        t.text = set.answers[i].answer;
                     break;
 
                 case 3:
                     foreach (Text t in answerFourTexts)
-                        t.text = set.answers[i];
+                        t.text = set.answers[i].answer;
                     break;
             }
         }

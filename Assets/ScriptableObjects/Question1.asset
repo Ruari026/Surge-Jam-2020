@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: What will you do about the dirty water supply?
   answers:
-  - The water is fine.
-  - We will fix it.
-  - More important matters first.
+  - answer: 
+    type: 0
+  - answer: 
+    type: 0
+  - answer: 
+    type: 0
+  - answer: 
+    type: 0
