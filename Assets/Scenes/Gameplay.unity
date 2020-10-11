@@ -6004,7 +6004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1310054418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6216,7 +6216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70d6f2059d9a2d42a2a7bc827449f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
+  totalMarbles: 0
 --- !u!4 &1381480299
 Transform:
   m_ObjectHideFlags: 0

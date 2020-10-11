@@ -43,6 +43,21 @@ public class PersistantData : MonoBehaviour
         }
     }
 
+    public void ResetScore()
+    {
+        // Resetting 
+        totalMarbles = 0;
+        eachMarbles = new Dictionary<AnswerTypes, int>();
+
+        // Setting Up Dictionary
+        eachMarbles.Add(AnswerTypes.RELATIONSHIPS, 0);
+        eachMarbles.Add(AnswerTypes.EDUCATION, 0);
+        eachMarbles.Add(AnswerTypes.ECONOMY, 0);
+        eachMarbles.Add(AnswerTypes.NATURE, 0);
+        eachMarbles.Add(AnswerTypes.HUMANITY, 0);
+        eachMarbles.Add(AnswerTypes.ARTS, 0);
+    }
+
     public void AddScore()
     {
         totalMarbles++;
@@ -54,6 +69,12 @@ public class PersistantData : MonoBehaviour
         eachMarbles[answerType]++;
     }
 
+
+    /*
+    ============================================================================================================================================================================================================================================================================================================
+    Hi Score Handling
+    ============================================================================================================================================================================================================================================================================================================
+    */
     public int GetHighScore()
     {
         hiScore = PlayerPrefs.GetInt("HiScore");
@@ -73,5 +94,37 @@ public class PersistantData : MonoBehaviour
     public static void ResetHiScore()
     {
         PlayerPrefs.SetInt("HiScore", 0);
+    }
+
+
+    /*
+    ============================================================================================================================================================================================================================================================================================================
+    Marble Type Analysis
+    ============================================================================================================================================================================================================================================================================================================
+    */
+    public AnswerTypes GetMostPickedAnswerType()
+    {
+        AnswerTypes a = GetMostPickedAnswerType(out float p);
+        return a;
+    }
+
+    public AnswerTypes GetMostPickedAnswerType(out float answerPercentage)
+    {
+        AnswerTypes answerType = AnswerTypes.RELATIONSHIPS;
+        int answerAmount = eachMarbles[answerType];
+
+        foreach (KeyValuePair<AnswerTypes, int> pair in eachMarbles)
+        {
+            if (pair.Value > answerAmount)
+            {
+                answerType = pair.Key;
+                answerAmount = pair.Value;
+            }
+        }
+
+        float percentage = (float)answerAmount / totalMarbles;
+        answerPercentage = percentage;
+
+        return answerType;
     }
 }

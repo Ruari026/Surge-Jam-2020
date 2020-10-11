@@ -16,8 +16,12 @@ public class GameOver : MonoBehaviour
         PersistantData persistantData = PersistantData.instance;
         persistantData.SetHighScore(persistantData.totalMarbles);
 
+        // Handling HiScore
         hiscoreText.text = persistantData.GetHighScore().ToString() + "- Marbles";
         finalScoreText.text = persistantData.totalMarbles.ToString() + "- Marbles";
+
+        // Handling Marble Type Analysis
+
     }
 
     public void ReturnToMenu()

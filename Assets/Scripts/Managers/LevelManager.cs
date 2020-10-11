@@ -66,7 +66,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PersistantData.instance.totalMarbles = 0;
+        PersistantData.instance.ResetScore();
 
         int pickedPlayerCharacter = Random.Range(0, possiblePlayerCharacters.Length);
         for (int i = 0; i < possiblePlayerCharacters.Length; i++)
