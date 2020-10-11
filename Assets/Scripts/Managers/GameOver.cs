@@ -21,7 +21,27 @@ public class GameOver : MonoBehaviour
         finalScoreText.text = persistantData.totalMarbles.ToString() + "- Marbles";
 
         // Handling Marble Type Analysis
+        AnswerTypes mostPicked = persistantData.GetMostPickedAnswerType(out float answerPercentage);
+        switch (mostPicked)
+        {
+            case AnswerTypes.RELATIONSHIPS:
+                break;
 
+            case AnswerTypes.EDUCATION:
+                break;
+
+            case AnswerTypes.ECONOMY:
+                break;
+
+            case AnswerTypes.NATURE:
+                break;
+
+            case AnswerTypes.HUMANITY:
+                break;
+
+            case AnswerTypes.ARTS:
+                break;
+        }
     }
 
     public void ReturnToMenu()
