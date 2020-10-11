@@ -36,6 +36,8 @@ public class QuestionUIManager : MonoBehaviour
 
     [Header("Question Timer")]
     [SerializeField]
+    private bool hasTimer = false;
+    [SerializeField]
     private Image timerBar;
 
     [Header("Individual Answers")]
@@ -82,14 +84,14 @@ public class QuestionUIManager : MonoBehaviour
     
     private IEnumerator DelayUIOpen()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.25f);
 
         theUI.SetActive(true);
     }
 
     private void Update()
     {
-        if (interactingAudienceMember != null)
+        if (interactingAudienceMember != null && hasTimer)
         {
             float pos = interactingAudienceMember.currentTime / interactingAudienceMember.maxTime;
             Vector3 newScale = Vector3.one;
@@ -115,6 +117,25 @@ public class QuestionUIManager : MonoBehaviour
         {
             // Add a marble
             LevelManager.instance.SpawnMarble();
+        }
+
+        // Close UI
+        theUI.SetActive(false);
+    }
+
+    public void CloseQuestionUI(int answerNumber)
+    {
+        // Audience Member Handling
+        if (interactingAudienceMember != null)
+        {
+            interactingAudienceMember.success = true;
+            interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
+
+            // Add a marble
+            AnswerTypes answer = interactingAudienceMember.theQuestion.answers[answerNumber].type;
+            LevelManager.instance.SpawnMarble(answer);
+
+            interactingAudienceMember = null;
         }
 
         // Close UI

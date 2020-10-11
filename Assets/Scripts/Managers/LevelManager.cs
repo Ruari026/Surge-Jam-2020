@@ -97,8 +97,20 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnMarble()
     {
-        GameObject newMarble = Instantiate(marblePrefab, this.transform);
+        MarbleController newMarble = Instantiate(marblePrefab, this.transform).GetComponent<MarbleController>();
         newMarble.transform.position = marbleSpawnPos.transform.position;
+
+        newMarble.RandomizeMarbleType();
+
+        PersistantData.instance.score++;
+    }
+
+    public void SpawnMarble(AnswerTypes answerType)
+    {
+        MarbleController newMarble = Instantiate(marblePrefab, this.transform).GetComponent<MarbleController>();
+        newMarble.transform.position = marbleSpawnPos.transform.position;
+
+        newMarble.SetMarbleType(answerType);
 
         PersistantData.instance.score++;
     }

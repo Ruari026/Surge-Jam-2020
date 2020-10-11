@@ -10,10 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37f1fdf0ce44fe848b5c514c378de2d7, type: 3}
-  m_Name: Question7
+  m_Name: TestQuestion
   m_EditorClassIdentifier: 
-  question: Would you form alliances with other countries?
+  question: Hello World
   answers:
-  - Better and stronger together.
-  - We should be independant.
-  - Only some countires.
+  - answer: A
+    type: 2
+  - answer: B
+    type: 4
+  - answer: C
+    type: 8
+  - answer: D
+    type: 16

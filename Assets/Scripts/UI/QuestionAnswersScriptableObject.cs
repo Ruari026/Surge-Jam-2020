@@ -20,7 +20,7 @@ public struct QuestionTypeSet
 [System.Flags]
 public enum AnswerTypes
 {
-    Nothing = 0,               // 000000
+    Nothing = 0,                // 000000
     RELATIONSHIPS = 1,      // 000001
     EDUCATION = 2,          // 000010
     ECONOMY = 4,            // 000100

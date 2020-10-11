@@ -25,6 +25,7 @@ public class AudienceMemberController : MonoBehaviour
 
     // Timer
     [Header("Question Timer")]
+    public bool hasTimer = false;
     public float currentTime = 0.0f;
     [SerializeField]
     public float maxTime = 1.0f;

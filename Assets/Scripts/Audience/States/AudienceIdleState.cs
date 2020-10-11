@@ -57,7 +57,7 @@ public class AudienceIdleState : AudienceState
 
     public override void UpdateState(AudienceMemberController theAudienceMember)
     {
-        if (started)
+        if (started && theAudienceMember.hasTimer)
         {
             theAudienceMember.currentTime += Time.deltaTime;
 
