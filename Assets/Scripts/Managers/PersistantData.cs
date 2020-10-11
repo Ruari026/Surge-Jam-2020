@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class PersistantData : MonoBehaviour
 {
-    public int score = 0;
+    // General HiScore
+    public int totalMarbles = 0;
     private int hiScore;
+
+    // Storing Each Marble Type
+    private Dictionary<AnswerTypes, int> eachMarbles;
 
     // Singleton Design Pattern
     private static PersistantData _Instance;
@@ -37,6 +41,17 @@ public class PersistantData : MonoBehaviour
             Debug.Log("Instance Already Exists");
             Destroy(this.gameObject);
         }
+    }
+
+    public void AddScore()
+    {
+        totalMarbles++;
+    }
+
+    public void AddScore(AnswerTypes answerType)
+    {
+        totalMarbles++;
+        eachMarbles[answerType]++;
     }
 
     public int GetHighScore()

@@ -66,7 +66,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PersistantData.instance.score = 0;
+        PersistantData.instance.totalMarbles = 0;
 
         int pickedPlayerCharacter = Random.Range(0, possiblePlayerCharacters.Length);
         for (int i = 0; i < possiblePlayerCharacters.Length; i++)
@@ -89,7 +89,7 @@ public class LevelManager : MonoBehaviour
         if (currentSpawnTime > timeToNextSpawn)
         {
             currentSpawnTime = 0;
-            timeToNextSpawn = baseSpawnTime - spawnTimeCurve.Evaluate((float)PersistantData.instance.score * 0.1f) * maxSpawnReduction;
+            timeToNextSpawn = baseSpawnTime - spawnTimeCurve.Evaluate((float)PersistantData.instance.totalMarbles * 0.1f) * maxSpawnReduction;
 
             AudienceSpawner.instance.SpawnAudienceMember();
         }
@@ -102,7 +102,7 @@ public class LevelManager : MonoBehaviour
 
         newMarble.RandomizeMarbleType();
 
-        PersistantData.instance.score++;
+        PersistantData.instance.AddScore();
     }
 
     public void SpawnMarble(AnswerTypes answerType)
@@ -112,7 +112,7 @@ public class LevelManager : MonoBehaviour
 
         newMarble.SetMarbleType(answerType);
 
-        PersistantData.instance.score++;
+        PersistantData.instance.AddScore(answerType);
     }
 
     public void IncreaseInstability()

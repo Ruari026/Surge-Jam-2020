@@ -14,10 +14,10 @@ public class GameOver : MonoBehaviour
     private void Start()
     {
         PersistantData persistantData = PersistantData.instance;
-        persistantData.SetHighScore(persistantData.score);
+        persistantData.SetHighScore(persistantData.totalMarbles);
 
         hiscoreText.text = persistantData.GetHighScore().ToString() + "- Marbles";
-        finalScoreText.text = persistantData.score.ToString() + "- Marbles";
+        finalScoreText.text = persistantData.totalMarbles.ToString() + "- Marbles";
     }
 
     public void ReturnToMenu()

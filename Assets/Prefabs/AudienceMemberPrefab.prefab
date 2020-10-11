@@ -262,7 +262,24 @@ MonoBehaviour:
   rightFill: {fileID: 1269287068216985721}
   theQuestion: {fileID: 0}
   possibleQuestions:
-  - {fileID: 11400000, guid: cfcc11d378a29854faf73c4fe7dd88af, type: 2}
+  - {fileID: 11400000, guid: 2264562bc122f274c879ea776013b544, type: 2}
+  - {fileID: 11400000, guid: f9f0a5b249eff5a489a47bbcdb47e167, type: 2}
+  - {fileID: 11400000, guid: 03193c30a2233014cb105a70011273f4, type: 2}
+  - {fileID: 11400000, guid: 209a3d0a706695a408152b646a6edca9, type: 2}
+  - {fileID: 11400000, guid: 7302b2d3de4505e448b12595003c52f1, type: 2}
+  - {fileID: 11400000, guid: c63864cb15c872a4b8207f1af66f6dcd, type: 2}
+  - {fileID: 11400000, guid: 5dcfe4059e887d54dba21ccdc22de31e, type: 2}
+  - {fileID: 11400000, guid: 4fc0d3d8db8cad94e898df32e5189526, type: 2}
+  - {fileID: 11400000, guid: fcac29dbcb0cb4e48ba4718fb4b7665c, type: 2}
+  - {fileID: 11400000, guid: 61e4f04dafca2174facf649b1c012018, type: 2}
+  - {fileID: 11400000, guid: 4450c268f6496ac4fa5082800e64f3f4, type: 2}
+  - {fileID: 11400000, guid: 967a038be1623e0458030b74f8872c93, type: 2}
+  - {fileID: 11400000, guid: 7a47f96e6b542d7499da398505ad0951, type: 2}
+  - {fileID: 11400000, guid: 2fb89c33fa223364ab2bc15a177b7a3a, type: 2}
+  - {fileID: 11400000, guid: a5f75a83f58b4b542b5e716d7573c42c, type: 2}
+  - {fileID: 11400000, guid: bbe17ca55ca2c0847b5b4429f2f07503, type: 2}
+  - {fileID: 11400000, guid: bec7edf91c3fc6f46bd401731a6d9afc, type: 2}
+  - {fileID: 11400000, guid: 96ba5700801c59746b1c8c19edbd7f90, type: 2}
 --- !u!95 &9110709215468666366
 Animator:
   serializedVersion: 3
