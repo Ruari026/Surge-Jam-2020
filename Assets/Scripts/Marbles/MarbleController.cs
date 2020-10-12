@@ -29,8 +29,6 @@ public class MarbleController : MonoBehaviour
 
     public void RandomizeMarbleType()
     {
-        marbleType = AnswerTypes.Nothing;
-
         int pickedMaterial = Random.Range(0, possibleMaterials.Length);
         this.GetComponent<Renderer>().material = possibleMaterials[pickedMaterial];
     }

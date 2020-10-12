@@ -13,19 +13,15 @@ public class QuestionAnswersScriptableObject : ScriptableObject
 public struct QuestionTypeSet
 {
     public string answer;
-    [EnumFlags]
     public AnswerTypes type;
 }
 
-[System.Flags]
 public enum AnswerTypes
 {
-    Nothing = 0,                // 000000
-    RELATIONSHIPS = 1,      // 000001
-    EDUCATION = 2,          // 000010
-    ECONOMY = 4,            // 000100
-    NATURE = 8,             // 001000
-    HUMANITY = 16,          // 010000
-    ARTS = 36,              // 100000
-    Everything = 0xFFFFFFF
+    RELATIONSHIPS = 0,
+    EDUCATION = 1,          
+    ECONOMY = 2,            
+    NATURE = 3,             
+    HUMANITY = 4,          
+    ARTS = 5,              
 }
