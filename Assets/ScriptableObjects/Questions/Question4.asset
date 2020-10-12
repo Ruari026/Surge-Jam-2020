@@ -15,10 +15,10 @@ MonoBehaviour:
   question: What keeps you up at night?
   answers:
   - answer: Past
-    type: 4
-  - answer: Present
-    type: 64
-  - answer: Future
-    type: 32
-  - answer: Ghosts
     type: 2
+  - answer: Present
+    type: 5
+  - answer: Future
+    type: 4
+  - answer: Ghosts
+    type: 0

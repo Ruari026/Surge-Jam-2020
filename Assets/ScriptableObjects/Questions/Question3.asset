@@ -15,10 +15,10 @@ MonoBehaviour:
   question: You come into a large sum of money, how did you spend it?
   answers:
   - answer: Save it
-    type: 8
-  - answer: Donate to charity
-    type: 32
-  - answer: Go travelling
-    type: 16
-  - answer: Treat my family
     type: 2
+  - answer: Donate to charity
+    type: 4
+  - answer: Go travelling
+    type: 3
+  - answer: Treat my family
+    type: 0

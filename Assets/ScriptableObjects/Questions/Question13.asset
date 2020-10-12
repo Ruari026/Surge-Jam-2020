@@ -15,10 +15,10 @@ MonoBehaviour:
   question: 5G is melting everyone's brains, what do you do?
   answers:
   - answer: Prove its a myth
-    type: 4
+    type: 1
   - answer: Go offline
-    type: 32
+    type: 4
   - answer: Invest in tin foil hat
-    type: 8
-  - answer: Warn your friends/loved ones
     type: 2
+  - answer: Warn your friends/loved ones
+    type: 0

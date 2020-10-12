@@ -15,10 +15,10 @@ MonoBehaviour:
   question: What do you fear?
   answers:
   - answer: Debt
-    type: 8
-  - answer: Loss
     type: 2
+  - answer: Loss
+    type: 0
   - answer: Climate Change
-    type: 16
+    type: 3
   - answer: Failure
-    type: 4
+    type: 1

@@ -15,10 +15,10 @@ MonoBehaviour:
   question: You have a long journey ahead of you, how do you spend it?
   answers:
   - answer: Reading a Book
-    type: 4
+    type: 1
   - answer: Listening to Music
-    type: 64
+    type: 5
   - answer: Talking to friends
-    type: 2
+    type: 0
   - answer: Taking in the scenery
-    type: 16
+    type: 3

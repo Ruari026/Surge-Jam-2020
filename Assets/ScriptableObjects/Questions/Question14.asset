@@ -15,10 +15,10 @@ MonoBehaviour:
   question: You volunteer to help out, where do you help out?
   answers:
   - answer: Water Aid
-    type: 32
+    type: 4
   - answer: Local theatre
-    type: 64
+    type: 5
   - answer: Homeless Shelter
-    type: 2
+    type: 0
   - answer: Environmental charity
-    type: 16
+    type: 3

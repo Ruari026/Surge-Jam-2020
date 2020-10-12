@@ -15,10 +15,10 @@ MonoBehaviour:
   question: You get the chance to go to space, what do you do?
   answers:
   - answer: Research
-    type: 4
+    type: 1
   - answer: Spend time with loved ones
-    type: 2
+    type: 0
   - answer: Buy a space camera
-    type: 8
+    type: 2
   - answer: Begin to colonise
-    type: 32
+    type: 4

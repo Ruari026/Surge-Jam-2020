@@ -15,10 +15,10 @@ MonoBehaviour:
   question: Hello World
   answers:
   - answer: A
-    type: 2
+    type: 0
   - answer: B
-    type: 4
+    type: 1
   - answer: C
-    type: 8
+    type: 2
   - answer: D
-    type: 16
+    type: 3

@@ -15,10 +15,10 @@ MonoBehaviour:
   question: A pandemic sweeps the nation, what's your stance?
   answers:
   - answer: Time to make a TikTok
-    type: 64
+    type: 5
   - answer: Watch live news updates
-    type: 32
+    type: 4
   - answer: Go for a daily walk
-    type: 16
+    type: 3
   - answer: Online shopping
-    type: 8
+    type: 2

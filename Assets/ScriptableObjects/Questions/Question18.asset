@@ -15,10 +15,10 @@ MonoBehaviour:
   question: There is one parachute left, who do you give it to?
   answers:
   - answer: Greta Thunberg
-    type: 32
+    type: 4
   - answer: David Attenborugh
-    type: 16
+    type: 3
   - answer: Christopher Nolan
-    type: 64
+    type: 5
   - answer: Jeff Bezos
-    type: 8
+    type: 2
