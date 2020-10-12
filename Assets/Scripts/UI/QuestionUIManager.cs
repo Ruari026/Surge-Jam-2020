@@ -116,7 +116,7 @@ public class QuestionUIManager : MonoBehaviour
         if (questionAnswered)
         {
             // Add a marble
-            LevelManager.instance.SpawnMarble();
+            MarbleSpawner.instance.SpawnMarble();
         }
 
         // Close UI
@@ -130,7 +130,7 @@ public class QuestionUIManager : MonoBehaviour
         {
             // Add a marble
             AnswerTypes answer = interactingAudienceMember.theQuestion.answers[answerNumber].type;
-            LevelManager.instance.SpawnMarble(answer);
+            MarbleSpawner.instance.SpawnMarble(answer);
 
             interactingAudienceMember.success = true;
             interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
