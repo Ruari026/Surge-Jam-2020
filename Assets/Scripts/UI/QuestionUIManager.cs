@@ -128,13 +128,13 @@ public class QuestionUIManager : MonoBehaviour
         // Audience Member Handling
         if (interactingAudienceMember != null)
         {
-            interactingAudienceMember.success = true;
-            interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
-
             // Add a marble
             AnswerTypes answer = interactingAudienceMember.theQuestion.answers[answerNumber].type;
             LevelManager.instance.SpawnMarble(answer);
 
+            interactingAudienceMember.success = true;
+            interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
+            
             interactingAudienceMember = null;
         }
 
