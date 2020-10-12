@@ -45,12 +45,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private float instabilityIncreaseRate = 2.0f;
 
-    [Header("Marble Spawning")]
-    [SerializeField]
-    private GameObject marblePrefab;
-    [SerializeField]
-    private Transform marbleSpawnPos;
-
     private void OnEnable()
     {
         if (_Instance == null)
@@ -93,26 +87,6 @@ public class LevelManager : MonoBehaviour
 
             AudienceSpawner.instance.SpawnAudienceMember();
         }
-    }
-
-    public void SpawnMarble()
-    {
-        MarbleController newMarble = Instantiate(marblePrefab, this.transform).GetComponent<MarbleController>();
-        newMarble.transform.position = marbleSpawnPos.transform.position;
-
-        newMarble.RandomizeMarbleType();
-
-        PersistantData.instance.AddScore();
-    }
-
-    public void SpawnMarble(AnswerTypes answerType)
-    {
-        MarbleController newMarble = Instantiate(marblePrefab, this.transform).GetComponent<MarbleController>();
-        newMarble.transform.position = marbleSpawnPos.transform.position;
-
-        newMarble.SetMarbleType(answerType);
-
-        PersistantData.instance.AddScore(answerType);
     }
 
     public void IncreaseInstability()
