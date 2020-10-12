@@ -15,10 +15,10 @@ MonoBehaviour:
   question: How do you spend your birthday?
   answers:
   - answer: Party
-    type: 2
+    type: 0
   - answer: Fundraising
-    type: 8
+    type: 2
   - answer: Try something new
-    type: 4
+    type: 1
   - answer: Go on hike
-    type: 16
+    type: 3

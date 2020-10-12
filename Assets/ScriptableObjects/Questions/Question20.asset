@@ -15,10 +15,10 @@ MonoBehaviour:
   question: If you could play any of these instruments, what would you play?
   answers:
   - answer: Recorder
-    type: 12
+    type: 1
   - answer: Kazoo
-    type: 8
-  - answer: Kalimba
-    type: 32
-  - answer: Piano
     type: 2
+  - answer: Kalimba
+    type: 4
+  - answer: Piano
+    type: 0

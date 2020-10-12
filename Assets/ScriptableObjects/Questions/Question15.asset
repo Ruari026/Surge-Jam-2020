@@ -15,10 +15,10 @@ MonoBehaviour:
   question: You are leaving home for a while, what do you take?
   answers:
   - answer: Music Player
-    type: 64
+    type: 5
   - answer: Book
-    type: 4
+    type: 1
   - answer: Savings
-    type: 8
-  - answer: Photos of friends of family
     type: 2
+  - answer: Photos of friends of family
+    type: 0

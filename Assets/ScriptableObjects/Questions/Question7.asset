@@ -15,10 +15,10 @@ MonoBehaviour:
   question: You hear a voice in your head, what is it saying?
   answers:
   - answer: Message loved ones
-    type: 2
+    type: 0
   - answer: Save that money
-    type: 8
+    type: 2
   - answer: Showcase your talent
-    type: 64
+    type: 5
   - answer: Sign that Petition
-    type: 32
+    type: 4

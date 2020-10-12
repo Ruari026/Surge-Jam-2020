@@ -15,10 +15,10 @@ MonoBehaviour:
   question: You are moving to a new city, where is the first place you like to explore?
   answers:
   - answer: Local Park
-    type: 16
+    type: 3
   - answer: Library
-    type: 4
+    type: 1
   - answer: Community Centre
-    type: 2
+    type: 0
   - answer: Ikea
-    type: 8
+    type: 2

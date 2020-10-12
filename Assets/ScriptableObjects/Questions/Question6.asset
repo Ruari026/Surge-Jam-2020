@@ -15,10 +15,10 @@ MonoBehaviour:
   question: The earth is flat, what do you think?
   answers:
   - answer: It's been proven!
-    type: 4
+    type: 1
   - answer: The world is still a stage
-    type: 64
+    type: 5
   - answer: Money still makes the world go round
-    type: 8
+    type: 2
   - answer: Too late, its dying anyway
-    type: 32
+    type: 4

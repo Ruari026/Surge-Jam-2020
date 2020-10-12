@@ -15,10 +15,10 @@ MonoBehaviour:
   question: You hop into a teleporter, where do you go?
   answers:
   - answer: The Amazon
-    type: 16
+    type: 3
   - answer: New York
-    type: 64
+    type: 5
   - answer: Greece
-    type: 4
+    type: 1
   - answer: The Arctic
-    type: 32
+    type: 4

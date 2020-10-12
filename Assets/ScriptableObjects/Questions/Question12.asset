@@ -15,10 +15,10 @@ MonoBehaviour:
   question: What type of video are you most likely to watch online?
   answers:
   - answer: Nature show
-    type: 16
+    type: 3
   - answer: Concert
-    type: 64
+    type: 5
   - answer: Tutorials
-    type: 4
+    type: 1
   - answer: Personal Vlog
-    type: 2
+    type: 0

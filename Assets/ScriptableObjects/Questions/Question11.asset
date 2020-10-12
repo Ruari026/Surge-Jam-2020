@@ -15,10 +15,10 @@ MonoBehaviour:
   question: Who is your favourite Greek god?
   answers:
   - answer: Gaia
-    type: 16
+    type: 3
   - answer: 'Plutus '
-    type: 8
+    type: 2
   - answer: Apollo
-    type: 64
+    type: 5
   - answer: Prometheus
-    type: 32
+    type: 4

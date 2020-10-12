@@ -15,10 +15,10 @@ MonoBehaviour:
   question: If you were stranded on a desert island, what item would you take?
   answers:
   - answer: Phone
-    type: 2
+    type: 0
   - answer: Book
-    type: 64
+    type: 5
   - answer: Camera
-    type: 16
+    type: 3
   - answer: Multi tool
-    type: 4
+    type: 1
