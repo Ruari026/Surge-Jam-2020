@@ -102,6 +102,11 @@ public class PersistantData : MonoBehaviour
     Marble Type Analysis
     ============================================================================================================================================================================================================================================================================================================
     */
+    public Dictionary<AnswerTypes, int> GetAllPickedMarbles()
+    {
+        return eachMarbles;
+    }
+
     public AnswerTypes GetMostPickedAnswerType()
     {
         AnswerTypes a = GetMostPickedAnswerType(out float p);

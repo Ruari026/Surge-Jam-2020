@@ -117,6 +117,7 @@ public class QuestionUIManager : MonoBehaviour
         {
             // Add a marble
             MarbleSpawner.instance.SpawnMarble();
+            PersistantData.instance.AddScore();
         }
 
         // Close UI
@@ -131,6 +132,8 @@ public class QuestionUIManager : MonoBehaviour
             // Add a marble
             AnswerTypes answer = interactingAudienceMember.theQuestion.answers[answerNumber].type;
             MarbleSpawner.instance.SpawnMarble(answer);
+
+            PersistantData.instance.AddScore(answer);
 
             interactingAudienceMember.success = true;
             interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);

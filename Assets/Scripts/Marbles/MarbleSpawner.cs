@@ -48,8 +48,6 @@ public class MarbleSpawner : MonoBehaviour
         newMarble.transform.position = marbleSpawnPos.transform.position;
 
         newMarble.RandomizeMarbleType();
-
-        PersistantData.instance.AddScore();
     }
 
     public void SpawnMarble(AnswerTypes answerType)
@@ -58,8 +56,6 @@ public class MarbleSpawner : MonoBehaviour
         newMarble.transform.position = marbleSpawnPos.transform.position;
 
         newMarble.SetMarbleType(answerType);
-
-        PersistantData.instance.AddScore(answerType);
     }
 
     private void OnDrawGizmos()
