@@ -116,6 +116,8 @@ public class PersistantData : MonoBehaviour
     public AnswerTypes GetMostPickedAnswerType(out float answerPercentage)
     {
         AnswerTypes answerType = AnswerTypes.RELATIONSHIPS;
+        if (eachMarbles == null)
+            ResetScore();
         int answerAmount = eachMarbles[answerType];
 
         foreach (KeyValuePair<AnswerTypes, int> pair in eachMarbles)

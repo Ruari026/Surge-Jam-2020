@@ -9,14 +9,14 @@
             List<T> shuffledList = new List<T>();
 
             int n = listToShuffle.Count;
-            while (n > 1)
+            while (n > 0)
             {
                 int i = Random.Range(0, listToShuffle.Count);
 
                 shuffledList.Add(listToShuffle[i]);
                 listToShuffle.Remove(listToShuffle[i]);
 
-                n++;
+                n--;
             }
 
             return shuffledList;

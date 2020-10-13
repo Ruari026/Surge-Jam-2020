@@ -16,6 +16,9 @@ public class GameOver : MonoBehaviour
     [SerializeField]
     private float timeBetweenFacts;
     private float currentFactTime;
+    private int currentShownFact = 0;
+    [SerializeField]
+    public GameObject[] theFacts;
 
     [Header("Background Marbles Handling")]
     [SerializeField]
@@ -55,6 +58,13 @@ public class GameOver : MonoBehaviour
             case AnswerTypes.ARTS:
                 break;
         }
+        SetupMarbleStack();
+    }
+
+    private void Update()
+    {
+        RunGameOverFactsAnim();
+        RunMarbleRunAnalysis();
     }
 
 
@@ -65,7 +75,35 @@ public class GameOver : MonoBehaviour
     */
     private void RunGameOverFactsAnim()
     {
+        currentFactTime -= Time.deltaTime;
+        if (currentFactTime <= 0)
+        {
+            GameObject current = theFacts[currentShownFact];
 
+            currentShownFact++;
+            if (currentShownFact >= theFacts.Length)
+                currentShownFact = 0;
+
+            GameObject next = theFacts[currentShownFact];
+
+            StartCoroutine(ChangeBetweenFacts(current, next));
+
+            currentFactTime = timeBetweenFacts;
+        }
+    }
+
+    private IEnumerator ChangeBetweenFacts(GameObject currentShownFact, GameObject nextShownFact)
+    {
+        // Hiding Current Fact
+        Animator currentAnimController = currentShownFact.GetComponent<Animator>();
+        currentAnimController.SetTrigger("Close");
+        yield return new WaitForSeconds(0.5f);
+        currentShownFact.SetActive(false);
+
+        // Showing Next Fact
+        nextShownFact.SetActive(true);
+        Animator nextAnimController = nextShownFact.GetComponent<Animator>();
+        nextAnimController.SetTrigger("Open");
     }
 
 
@@ -86,8 +124,9 @@ public class GameOver : MonoBehaviour
                 orderedList.Add(pair.Key);
             }
         }
-
         List<AnswerTypes> shuffledList = orderedList.Shuffle();
+
+        marblesToSpawn = new Queue<AnswerTypes>();
         foreach (AnswerTypes a in shuffledList)
         {
             marblesToSpawn.Enqueue(a);
@@ -108,6 +147,12 @@ public class GameOver : MonoBehaviour
         }
     }
 
+
+    /*
+    ========================================================================================================================================================================================================
+    Scene Movement
+    ========================================================================================================================================================================================================
+    */
     public void ReturnToMenu()
     {
         SceneManager.LoadScene(0);

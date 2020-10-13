@@ -33,6 +33,8 @@ public class QuestionUIManager : MonoBehaviour
     private GameObject threeAnswerUI;
     [SerializeField]
     private GameObject fourAnswerUI;
+    [SerializeField]
+    private GameObject backgroundFade;
 
     [Header("Question Timer")]
     [SerializeField]
@@ -87,6 +89,7 @@ public class QuestionUIManager : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         theUI.SetActive(true);
+        backgroundFade.SetActive(true);
     }
 
     private void Update()
@@ -122,6 +125,7 @@ public class QuestionUIManager : MonoBehaviour
 
         // Close UI
         theUI.SetActive(false);
+        backgroundFade.SetActive(false);
     }
 
     public void CloseQuestionUI(int answerNumber)
@@ -143,6 +147,7 @@ public class QuestionUIManager : MonoBehaviour
 
         // Close UI
         theUI.SetActive(false);
+        backgroundFade.SetActive(false);
     }
 
     public void SetUIFields(QuestionAnswersScriptableObject set)
