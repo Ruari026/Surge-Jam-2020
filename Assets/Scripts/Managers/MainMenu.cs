@@ -5,9 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-   public void PlayGame()
+    public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine(WaitAndPlayGame());
     }
 
+    private IEnumerator WaitAndPlayGame()
+    {
+        TransitionScreenController.instance.FadeOut();
+
+        yield return new WaitForSeconds(0.75f);
+
+        SceneManager.LoadScene("GamePlay");
+    }
 }

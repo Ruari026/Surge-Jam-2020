@@ -74,6 +74,8 @@ public class LevelManager : MonoBehaviour
                 possiblePlayerCharacters[i].SetActive(false);
             }
         }
+
+        TransitionScreenController.instance.FadeIn();
     }
 
     // Update is called once per frame

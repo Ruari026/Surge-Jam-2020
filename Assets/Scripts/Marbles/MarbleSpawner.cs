@@ -22,11 +22,15 @@ public class MarbleSpawner : MonoBehaviour
         }
     }
 
-    [Header("Marble Spawning")]
+    [Header("Spawn Range Handling")]
+    [SerializeField]
+    private Transform minSpawnPos;
+    [SerializeField]
+    private Transform maxSpawnPos;
+
+    [Header("Marble Details")]
     [SerializeField]
     private GameObject marblePrefab;
-    [SerializeField]
-    private Transform marbleSpawnPos;
 
     private void OnEnable()
     {
@@ -44,16 +48,31 @@ public class MarbleSpawner : MonoBehaviour
 
     public void SpawnMarble()
     {
+        Vector3 spawnPos = new Vector3
+        {
+            x = Random.Range(minSpawnPos.position.x, maxSpawnPos.position.x),
+            y = minSpawnPos.position.y,
+            z = minSpawnPos.position.z
+        };
+
+        // Spawning New Marble
         MarbleController newMarble = Instantiate(marblePrefab, this.transform).GetComponent<MarbleController>();
-        newMarble.transform.position = marbleSpawnPos.transform.position;
+        newMarble.transform.position = spawnPos;
 
         newMarble.RandomizeMarbleType();
     }
 
     public void SpawnMarble(AnswerTypes answerType)
     {
+        Vector3 spawnPos = new Vector3
+        {
+            x = Random.Range(minSpawnPos.position.x, maxSpawnPos.position.x),
+            y = minSpawnPos.position.y,
+            z = minSpawnPos.position.z
+        };
+
         MarbleController newMarble = Instantiate(marblePrefab, this.transform).GetComponent<MarbleController>();
-        newMarble.transform.position = marbleSpawnPos.transform.position;
+        newMarble.transform.position = spawnPos;
 
         newMarble.SetMarbleType(answerType);
     }
@@ -61,6 +80,10 @@ public class MarbleSpawner : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(marbleSpawnPos.position, 0.1f);
+
+        Gizmos.DrawWireSphere(minSpawnPos.position, 0.1f);
+        Gizmos.DrawWireSphere(maxSpawnPos.position, 0.1f);
+
+        Gizmos.DrawLine(minSpawnPos.position, maxSpawnPos.position);
     }
 }

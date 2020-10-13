@@ -23,5 +23,5 @@ public enum AnswerTypes
     ECONOMY = 2,            
     NATURE = 3,             
     HUMANITY = 4,          
-    ARTS = 5,              
+    ARTS = 5,
 }

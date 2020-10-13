@@ -29,15 +29,9 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Audience Spawning")]
     private float currentSpawnTime = 0;
-    private float currentLevelTime = 0;
-    [SerializeField]
-    private float baseSpawnTime = 5.0f;
-    [SerializeField]
-    private float maxSpawnReduction = 4.5f;
+    private bool hasSpawned = false;
     [SerializeField]
     private float timeToNextSpawn = 1.0f;
-    [SerializeField]
-    private AnimationCurve spawnTimeCurve;
 
     [Header("Platform Handling")]
     [SerializeField]
@@ -79,22 +73,25 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSpawnTime += Time.deltaTime;
-        if (currentSpawnTime > timeToNextSpawn)
+        if (!hasSpawned)
         {
-            currentSpawnTime = 0;
-            timeToNextSpawn = baseSpawnTime - spawnTimeCurve.Evaluate((float)PersistantData.instance.totalMarbles * 0.1f) * maxSpawnReduction;
+            currentSpawnTime += Time.deltaTime;
 
-            AudienceSpawner.instance.SpawnAudienceMember();
+            if (currentSpawnTime > timeToNextSpawn)
+            {
+                AudienceSpawner.instance.SpawnAudienceMember();
+                hasSpawned = true;
+            }
         }
     }
 
-    public void IncreaseInstability()
+    public void RestartTutorial()
     {
-        thePlatform.instabilityAmount *= instabilityIncreaseRate;
+        currentSpawnTime = 0;
+        hasSpawned = false;
     }
 
-    public void EndGame()
+    public void EndTutorial()
     {
         SceneManager.LoadScene("Game_Over");
     }

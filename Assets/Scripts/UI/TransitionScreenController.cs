@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoadingScreenController : MonoBehaviour
+public class TransitionScreenController : MonoBehaviour
 {
-    private static LoadingScreenController _Instance;
-    public static LoadingScreenController instance
+    private static TransitionScreenController _Instance;
+    public static TransitionScreenController instance
     {
         get
         {
@@ -22,33 +22,34 @@ public class LoadingScreenController : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private Animator theAnimController;
+    [SerializeField]
+    private bool startFadedIn;
+
     private void OnEnable()
     {
         if (_Instance == null)
         {
             _Instance = this;
             DontDestroyOnLoad(this);
+
+            theAnimController.SetBool("StartIn", startFadedIn);
         }
         else
         {
-            Debug.LogError("ERROR: Instance Already Exists");
+            Debug.Log("Warning: Instance Already Exists, Destroying this...");
             Destroy(this.gameObject);
         }
     }
 
-    [SerializeField]
-    private Animator theAnimController;
-
-    public void TriggerLoadingScreen(Action myMethodName)
+    public void FadeIn()
     {
-        StartCoroutine(RunLoadingScreen(myMethodName));
+        theAnimController.SetTrigger("FadeIn");
     }
 
-    private IEnumerator RunLoadingScreen(Action myMethodName)
+    public void FadeOut()
     {
-        theAnimController.SetTrigger("Trigger");
-
-        yield return new WaitForSeconds(1.0f);
-        myMethodName.Invoke();
+        theAnimController.SetTrigger("FadeOut");
     }
 }
