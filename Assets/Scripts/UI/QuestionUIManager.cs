@@ -40,6 +40,8 @@ public class QuestionUIManager : MonoBehaviour
     [SerializeField]
     private bool hasTimer = false;
     [SerializeField]
+    private GameObject timerParent;
+    [SerializeField]
     private Image timerBar;
 
     [Header("Individual Answers")]
@@ -90,6 +92,11 @@ public class QuestionUIManager : MonoBehaviour
 
         theUI.SetActive(true);
         backgroundFade.SetActive(true);
+
+        if (hasTimer)
+        {
+            timerParent.gameObject.SetActive(true);
+        }
     }
 
     private void Update()
@@ -126,6 +133,7 @@ public class QuestionUIManager : MonoBehaviour
         // Close UI
         theUI.SetActive(false);
         backgroundFade.SetActive(false);
+        timerParent.SetActive(false);
     }
 
     public void CloseQuestionUI(int answerNumber)
@@ -148,6 +156,7 @@ public class QuestionUIManager : MonoBehaviour
         // Close UI
         theUI.SetActive(false);
         backgroundFade.SetActive(false);
+        timerParent.SetActive(false);
     }
 
     public void SetUIFields(QuestionAnswersScriptableObject set)
