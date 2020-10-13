@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: A
     type: 0
+    nextQuestion: -1
   - answer: B
     type: 1
+    nextQuestion: -1
   - answer: C
     type: 2
+    nextQuestion: -1
   - answer: D
     type: 3
+    nextQuestion: -1

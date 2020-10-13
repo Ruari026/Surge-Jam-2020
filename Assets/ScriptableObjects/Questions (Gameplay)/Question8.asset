@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: The Amazon
     type: 3
+    nextQuestion: -1
   - answer: New York
     type: 5
+    nextQuestion: -1
   - answer: Greece
     type: 1
+    nextQuestion: -1
   - answer: The Arctic
     type: 4
+    nextQuestion: -1

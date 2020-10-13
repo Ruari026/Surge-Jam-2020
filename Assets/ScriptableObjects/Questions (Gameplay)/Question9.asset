@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Time to make a TikTok
     type: 5
+    nextQuestion: -1
   - answer: Watch live news updates
     type: 4
+    nextQuestion: -1
   - answer: Go for a daily walk
     type: 3
+    nextQuestion: -1
   - answer: Online shopping
     type: 2
+    nextQuestion: -1

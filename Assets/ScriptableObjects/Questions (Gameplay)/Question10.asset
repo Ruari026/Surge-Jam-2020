@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Martin Luther King's speech
     type: 4
+    nextQuestion: -1
   - answer: Shakespere
     type: 5
+    nextQuestion: -1
   - answer: Dinosaurs
     type: 3
+    nextQuestion: -1
   - answer: Pyramids being built
     type: 1
+    nextQuestion: -1

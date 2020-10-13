@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Music Player
     type: 5
+    nextQuestion: -1
   - answer: Book
     type: 1
+    nextQuestion: -1
   - answer: Savings
     type: 2
+    nextQuestion: -1
   - answer: Photos of friends of family
     type: 0
+    nextQuestion: -1

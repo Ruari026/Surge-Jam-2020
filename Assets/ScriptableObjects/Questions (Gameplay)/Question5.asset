@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Research
     type: 1
+    nextQuestion: -1
   - answer: Spend time with loved ones
     type: 0
+    nextQuestion: -1
   - answer: Buy a space camera
     type: 2
+    nextQuestion: -1
   - answer: Begin to colonise
     type: 4
+    nextQuestion: -1

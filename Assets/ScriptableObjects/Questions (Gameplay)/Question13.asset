@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Prove its a myth
     type: 1
+    nextQuestion: -1
   - answer: Go offline
     type: 4
+    nextQuestion: -1
   - answer: Invest in tin foil hat
     type: 2
+    nextQuestion: -1
   - answer: Warn your friends/loved ones
     type: 0
+    nextQuestion: -1

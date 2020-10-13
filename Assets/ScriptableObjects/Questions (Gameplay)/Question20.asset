@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Recorder
     type: 1
+    nextQuestion: -1
   - answer: Kazoo
     type: 2
+    nextQuestion: -1
   - answer: Kalimba
     type: 4
+    nextQuestion: -1
   - answer: Piano
     type: 0
+    nextQuestion: -1

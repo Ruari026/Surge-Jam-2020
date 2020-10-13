@@ -141,22 +141,42 @@ public class QuestionUIManager : MonoBehaviour
         // Audience Member Handling
         if (interactingAudienceMember != null)
         {
-            // Add a marble
-            AnswerTypes answer = interactingAudienceMember.theQuestion.answers[answerNumber].type;
-            MarbleSpawner.instance.SpawnMarble(answer);
+            // Details of chosen answer
+            AnswerDetailsSet answer = interactingAudienceMember.theQuestion.answers[answerNumber];
 
-            PersistantData.instance.AddScore(answer);
+            // Checking if a marble needs to be spawned
+            if (answer.type != AnswerTypes.NONE)
+            {
+                MarbleSpawner.instance.SpawnMarble(answer.type);
+                PersistantData.instance.AddScore(answer.type);
+            }
 
-            interactingAudienceMember.success = true;
-            interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
-            
-            interactingAudienceMember = null;
+            // Determining Next Dialogue Step
+            if (answer.nextQuestion >= 0)
+            {
+                // Load Next Question Answer Set
+                int nextQuestion = interactingAudienceMember.theQuestion.answers[answerNumber].nextQuestion;
+                QuestionAnswersScriptableObject nextSet = interactingAudienceMember.possibleProgressionQuestions[nextQuestion];
+
+                interactingAudienceMember.theQuestion = nextSet;
+
+                SetUIFields(interactingAudienceMember.theQuestion);
+            }
+            else
+            {
+                // End of dialogue tree
+                interactingAudienceMember.success = true;
+                interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
+
+                interactingAudienceMember = null;
+
+                // Close UI
+                theUI.SetActive(false);
+                backgroundFade.SetActive(false);
+                timerParent.SetActive(false);
+            }
         }
-
-        // Close UI
-        theUI.SetActive(false);
-        backgroundFade.SetActive(false);
-        timerParent.SetActive(false);
+            
     }
 
     public void SetUIFields(QuestionAnswersScriptableObject set)

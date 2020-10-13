@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Greta Thunberg
     type: 4
+    nextQuestion: -1
   - answer: David Attenborugh
     type: 3
+    nextQuestion: -1
   - answer: Christopher Nolan
     type: 5
+    nextQuestion: -1
   - answer: Jeff Bezos
     type: 2
+    nextQuestion: -1

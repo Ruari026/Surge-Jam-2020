@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Local Park
     type: 3
+    nextQuestion: -1
   - answer: Library
     type: 1
+    nextQuestion: -1
   - answer: Community Centre
     type: 0
+    nextQuestion: -1
   - answer: Ikea
     type: 2
+    nextQuestion: -1

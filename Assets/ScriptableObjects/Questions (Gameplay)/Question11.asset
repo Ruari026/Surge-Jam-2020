@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Gaia
     type: 3
+    nextQuestion: -1
   - answer: 'Plutus '
     type: 2
+    nextQuestion: -1
   - answer: Apollo
     type: 5
+    nextQuestion: -1
   - answer: Prometheus
     type: 4
+    nextQuestion: -1

@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Phone
     type: 0
+    nextQuestion: -1
   - answer: Book
     type: 5
+    nextQuestion: -1
   - answer: Camera
     type: 3
+    nextQuestion: -1
   - answer: Multi tool
     type: 1
+    nextQuestion: -1

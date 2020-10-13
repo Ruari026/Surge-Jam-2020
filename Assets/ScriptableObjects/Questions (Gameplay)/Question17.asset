@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Debt
     type: 2
+    nextQuestion: -1
   - answer: Loss
     type: 0
+    nextQuestion: -1
   - answer: Climate Change
     type: 3
+    nextQuestion: -1
   - answer: Failure
     type: 1
+    nextQuestion: -1

@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Water Aid
     type: 4
+    nextQuestion: -1
   - answer: Local theatre
     type: 5
+    nextQuestion: -1
   - answer: Homeless Shelter
     type: 0
+    nextQuestion: -1
   - answer: Environmental charity
     type: 3
+    nextQuestion: -1

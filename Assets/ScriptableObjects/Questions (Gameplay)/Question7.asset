@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Message loved ones
     type: 0
+    nextQuestion: -1
   - answer: Save that money
     type: 2
+    nextQuestion: -1
   - answer: Showcase your talent
     type: 5
+    nextQuestion: -1
   - answer: Sign that Petition
     type: 4
+    nextQuestion: -1

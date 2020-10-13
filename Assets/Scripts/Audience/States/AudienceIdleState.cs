@@ -38,8 +38,8 @@ public class AudienceIdleState : AudienceState
         }
 
         // Randomize Question To Be Asked
-        int pickedQuestion = Random.Range(0, theAudienceMember.possibleQuestions.Length);
-        theAudienceMember.theQuestion = theAudienceMember.possibleQuestions[pickedQuestion];
+        int pickedQuestion = Random.Range(0, theAudienceMember.possibleStartQuestions.Length);
+        theAudienceMember.theQuestion = theAudienceMember.possibleStartQuestions[pickedQuestion];
 
         yield return new WaitForSeconds(1.0f);
 

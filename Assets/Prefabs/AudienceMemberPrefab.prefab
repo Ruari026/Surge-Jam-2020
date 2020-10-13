@@ -261,7 +261,7 @@ MonoBehaviour:
   questionRight: {fileID: 100456895117831820}
   rightFill: {fileID: 1269287068216985721}
   theQuestion: {fileID: 0}
-  possibleQuestions:
+  possibleStartQuestions:
   - {fileID: 11400000, guid: 2264562bc122f274c879ea776013b544, type: 2}
   - {fileID: 11400000, guid: f9f0a5b249eff5a489a47bbcdb47e167, type: 2}
   - {fileID: 11400000, guid: 03193c30a2233014cb105a70011273f4, type: 2}
@@ -282,6 +282,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 96ba5700801c59746b1c8c19edbd7f90, type: 2}
   - {fileID: 11400000, guid: 56d63aa0882151942a177c50dce3c9ce, type: 2}
   - {fileID: 11400000, guid: 68aa509b40edafe47b741a91931dccf5, type: 2}
+  possibleProgressionQuestions: []
 --- !u!95 &9110709215468666366
 Animator:
   serializedVersion: 3

@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Party
     type: 0
+    nextQuestion: -1
   - answer: Fundraising
     type: 2
+    nextQuestion: -1
   - answer: Try something new
     type: 1
+    nextQuestion: -1
   - answer: Go on hike
     type: 3
+    nextQuestion: -1

@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Nature show
     type: 3
+    nextQuestion: -1
   - answer: Concert
     type: 5
+    nextQuestion: -1
   - answer: Tutorials
     type: 1
+    nextQuestion: -1
   - answer: Personal Vlog
     type: 0
+    nextQuestion: -1

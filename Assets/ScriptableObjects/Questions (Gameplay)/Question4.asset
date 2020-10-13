@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Past
     type: 2
+    nextQuestion: -1
   - answer: Present
     type: 5
+    nextQuestion: -1
   - answer: Future
     type: 4
+    nextQuestion: -1
   - answer: Ghosts
     type: 0
+    nextQuestion: -1

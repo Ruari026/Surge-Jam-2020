@@ -242,6 +242,7 @@ MonoBehaviour:
   fourAnswerUI: {fileID: 1605857080}
   backgroundFade: {fileID: 32873530}
   hasTimer: 0
+  timerParent: {fileID: 1317108715}
   timerBar: {fileID: 1514492218}
   questionText: {fileID: 185727981}
   answerOneTexts:
@@ -6192,7 +6193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4fa84a12e519c4b84630a4fa39e459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audienceMemberPrefab: {fileID: 1790241065109642740, guid: 0910ac56757f9e64183ab25516b73ad5,
+  audienceMemberPrefab: {fileID: 1790241065109642740, guid: 3b5527277ca955b4eb35c2ae0d91f4f7,
     type: 3}
   allSpawnPoints:
   - {fileID: 930347329}

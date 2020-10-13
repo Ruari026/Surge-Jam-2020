@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: It's been proven!
     type: 1
+    nextQuestion: -1
   - answer: The world is still a stage
     type: 5
+    nextQuestion: -1
   - answer: Money still makes the world go round
     type: 2
+    nextQuestion: -1
   - answer: Too late, its dying anyway
     type: 4
+    nextQuestion: -1

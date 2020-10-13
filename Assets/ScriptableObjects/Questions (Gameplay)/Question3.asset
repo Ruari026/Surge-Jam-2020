@@ -16,9 +16,13 @@ MonoBehaviour:
   answers:
   - answer: Save it
     type: 2
+    nextQuestion: -1
   - answer: Donate to charity
     type: 4
+    nextQuestion: -1
   - answer: Go travelling
     type: 3
+    nextQuestion: -1
   - answer: Treat my family
     type: 0
+    nextQuestion: -1
