@@ -13,4 +13,9 @@ public class WebsiteLink : MonoBehaviour
     {
         Application.OpenURL("https://appdeveloperscotland.co.uk/");
     }
+
+    public void SurgeLink()
+    {
+        Application.OpenURL("http://www.surge.scot/games-jam/");
+    }
 }
