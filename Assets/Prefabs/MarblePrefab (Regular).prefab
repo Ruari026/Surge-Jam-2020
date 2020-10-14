@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 616591089411258426}
   - component: {fileID: -4953308689332521884}
   m_Layer: 10
-  m_Name: MarblePrefab
+  m_Name: MarblePrefab (Regular)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,10 +124,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleMaterials:
-  - {fileID: 2100000, guid: 1a401494a07b08b43802d9cc1fd323b0, type: 2}
-  - {fileID: 2100000, guid: 05d196b8d5769b8489cf941525588983, type: 2}
-  - {fileID: 2100000, guid: 58a58ca1105dcb64faf43f62ef5b91ac, type: 2}
-  - {fileID: 2100000, guid: eee88031508e5ac499fc120c52cb4310, type: 2}
+  - {fileID: 2100000, guid: bafab65e406e5044f8a5d7e8c403582a, type: 2}
+  - {fileID: 2100000, guid: d70e34fe89f00ea4e97921ed8627b61f, type: 2}
+  - {fileID: 2100000, guid: 61b1d7014de38c549ada5aa70d1f2021, type: 2}
+  - {fileID: 2100000, guid: af5e08bf164e2844e9ff7ff444fbabcf, type: 2}
   - {fileID: 2100000, guid: 4c3ed8ed35655884eaf2862b3d324c56, type: 2}
   - {fileID: 2100000, guid: 550910711605bc24e8db1b1af83456a2, type: 2}
   marbleType: 0
