@@ -2957,11 +2957,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas (Transitions)
       objectReference: {fileID: 0}
-    - target: {fileID: 8461554574414973908, guid: 32805c290c5b9d9428d3e519693312a9,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 8461554574414973911, guid: 32805c290c5b9d9428d3e519693312a9,
         type: 3}
       propertyPath: m_LocalPosition.x
