@@ -27,7 +27,7 @@ public class PlatformController : MonoBehaviour
     {
         offset = this.transform.eulerAngles;
 
-        startOrientation = Input.acceleration;
+        ResetGyro();
     }
 
     // Update is called once per frame
@@ -78,5 +78,10 @@ public class PlatformController : MonoBehaviour
             direction.Normalize();
 
         thePlatform.transform.rotation = Quaternion.Lerp(thePlatform.transform.rotation, Quaternion.Euler((direction * maxAngle) + offset), Time.deltaTime);
+    }
+
+    public void ResetGyro()
+    {
+        startOrientation = Input.acceleration;
     }
 }

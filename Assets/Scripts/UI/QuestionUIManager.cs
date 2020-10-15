@@ -33,8 +33,14 @@ public class QuestionUIManager : MonoBehaviour
     private GameObject threeAnswerUI;
     [SerializeField]
     private GameObject fourAnswerUI;
+    [SerializeField]
+    private GameObject backgroundFade;
 
     [Header("Question Timer")]
+    [SerializeField]
+    private bool hasTimer = false;
+    [SerializeField]
+    private GameObject timerParent;
     [SerializeField]
     private Image timerBar;
 
@@ -82,14 +88,20 @@ public class QuestionUIManager : MonoBehaviour
     
     private IEnumerator DelayUIOpen()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.25f);
 
         theUI.SetActive(true);
+        backgroundFade.SetActive(true);
+
+        if (hasTimer)
+        {
+            timerParent.gameObject.SetActive(true);
+        }
     }
 
     private void Update()
     {
-        if (interactingAudienceMember != null)
+        if (interactingAudienceMember != null && hasTimer)
         {
             float pos = interactingAudienceMember.currentTime / interactingAudienceMember.maxTime;
             Vector3 newScale = Vector3.one;
@@ -114,11 +126,57 @@ public class QuestionUIManager : MonoBehaviour
         if (questionAnswered)
         {
             // Add a marble
-            LevelManager.instance.SpawnMarble();
+            MarbleSpawner.instance.SpawnMarble();
+            PersistantData.instance.AddScore();
         }
 
         // Close UI
         theUI.SetActive(false);
+        backgroundFade.SetActive(false);
+        timerParent.SetActive(false);
+    }
+
+    public void CloseQuestionUI(int answerNumber)
+    {
+        // Audience Member Handling
+        if (interactingAudienceMember != null)
+        {
+            // Details of chosen answer
+            AnswerDetailsSet answer = interactingAudienceMember.theQuestion.answers[answerNumber];
+
+            // Checking if a marble needs to be spawned
+            if (answer.type != AnswerTypes.NONE)
+            {
+                MarbleSpawner.instance.SpawnMarble(answer.type);
+                PersistantData.instance.AddScore(answer.type);
+            }
+
+            // Determining Next Dialogue Step
+            if (answer.nextQuestion >= 0)
+            {
+                // Load Next Question Answer Set
+                int nextQuestion = interactingAudienceMember.theQuestion.answers[answerNumber].nextQuestion;
+                QuestionAnswersScriptableObject nextSet = interactingAudienceMember.possibleProgressionQuestions[nextQuestion];
+
+                interactingAudienceMember.theQuestion = nextSet;
+
+                SetUIFields(interactingAudienceMember.theQuestion);
+            }
+            else
+            {
+                // End of dialogue tree
+                interactingAudienceMember.success = true;
+                interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
+
+                interactingAudienceMember = null;
+
+                // Close UI
+                theUI.SetActive(false);
+                backgroundFade.SetActive(false);
+                timerParent.SetActive(false);
+            }
+        }
+            
     }
 
     public void SetUIFields(QuestionAnswersScriptableObject set)
@@ -132,22 +190,22 @@ public class QuestionUIManager : MonoBehaviour
             {
                 case 0:
                     foreach (Text t in answerOneTexts)
-                        t.text = set.answers[i];
+                        t.text = set.answers[i].answer;
                     break;
 
                 case 1:
                     foreach (Text t in answerTwoTexts)
-                        t.text = set.answers[i];
+                        t.text = set.answers[i].answer;
                     break;
 
                 case 2:
                     foreach (Text t in answerThreeTexts)
-                        t.text = set.answers[i];
+                        t.text = set.answers[i].answer;
                     break;
 
                 case 3:
                     foreach (Text t in answerFourTexts)
-                        t.text = set.answers[i];
+                        t.text = set.answers[i].answer;
                     break;
             }
         }

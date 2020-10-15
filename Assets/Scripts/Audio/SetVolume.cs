@@ -7,23 +7,19 @@ using UnityEngine.Audio;
 public class SetVolume : MonoBehaviour
 {
     public AudioMixer mixer;
-    public Slider slider;
-
-    public void SetLevel (float SliderValue)
-    {
-        mixer.SetFloat("MusicVol", Mathf.Log10 (SliderValue) *20 );
-    }
-
-
+    public Slider masterSlider;
+    public Slider musicSlider;
+    public Slider sfxSlider;
+    
     private void OnEnable()
     {
         mixer.GetFloat("MusicVol", out float startValue);
-        //gameMixer.GetFloat("Music", out startMusicVolume);
-        //gameMixer.GetFloat("SFX", out startSfxVolume);
+        mixer.GetFloat("Music", out float startMusicVolume);
+        mixer.GetFloat("SFX", out float startSfxVolume);
 
-        slider.value = ConvertToSliderValue(startValue);
-        //musicSlider.value = ConvertToSliderValue(startMusicVolume);
-        //sfxSlider.value = ConvertToSliderValue(startSfxVolume);
+        masterSlider.value = ConvertToSliderValue(startValue);
+        musicSlider.value = ConvertToSliderValue(startMusicVolume);
+        sfxSlider.value = ConvertToSliderValue(startSfxVolume);
     }
 
 
@@ -34,16 +30,16 @@ public class SetVolume : MonoBehaviour
     */
     public void SetMasterVolume()
     {
-        mixer.SetFloat("MusicVol", ConvertToDB(slider.value));
+        mixer.SetFloat("MasterVol", ConvertToDB(masterSlider.value));
     }
-    /*public void SetMusicVolume()
+    public void SetMusicVolume()
     {
-        gameMixer.SetFloat("Music", ConvertToDB(musicSlider.value));
+        mixer.SetFloat("MusicVol", ConvertToDB(musicSlider.value));
     }
     public void SetSfxVolume()
     {
-        gameMixer.SetFloat("SFX", ConvertToDB(sfxSlider.value));
-    }*/
+        mixer.SetFloat("SFXVol", ConvertToDB(sfxSlider.value));
+    }
 
 
     /*

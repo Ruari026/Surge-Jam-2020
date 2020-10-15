@@ -27,8 +27,11 @@ public class AudienceSpawner : MonoBehaviour
     private GameObject audienceMemberPrefab;
 
     [Header("Spawn Bounds")]
-    public Transform[] spawnRows;
-    public float[] rowWidths;
+    [SerializeField]
+    private List<SpawnPoint> allSpawnPoints;
+    private List<SpawnPoint> availableSpawnPoints;
+    [SerializeField]
+    private Vector2 spawnLimits;
 
     private void OnEnable()
     {
@@ -45,7 +48,21 @@ public class AudienceSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Determines Which SpawnPoints Are On The Screen And Which Aren't
+        availableSpawnPoints = new List<SpawnPoint>();
+        foreach (SpawnPoint sp in allSpawnPoints)
+        {
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(sp.transform.position);
+            if ((screenPos.x > (Screen.width * spawnLimits.x)) && (screenPos.x < (Screen.width - (Screen.width * spawnLimits.x))) && (screenPos.y > (Screen.height * spawnLimits.y)) && (screenPos.y < (Screen.height - (Screen.height * spawnLimits.y))))
+            {
+                availableSpawnPoints.Add(sp);
+                sp.IsViable = true;
+            }
+            else
+            {
+                sp.IsViable = false;
+            }
+        }
     }
 
     public void SpawnAudienceMember()
@@ -55,23 +72,25 @@ public class AudienceSpawner : MonoBehaviour
         Vector3 distance = Vector3.zero;
 
         // Depth Position
-        int pickedRow = Random.Range(0, spawnRows.Length);
-        distance = spawnRows[pickedRow].position;
-
-        // Horizontal Position
-        float range = rowWidths[pickedRow];
-        distance.x = Random.Range(-range, range);
-
-        newAudienceMember.transform.position = distance;
+        int pickedSpawn = Random.Range(0, availableSpawnPoints.Count);
+        newAudienceMember.transform.position = availableSpawnPoints[pickedSpawn].transform.position;
         newAudienceMember.transform.rotation = Quaternion.identity;
     }
 
     private void OnDrawGizmos()
     {
-        for (int i = 0; i < spawnRows.Length; i++)
+        foreach (SpawnPoint sp in allSpawnPoints)
         {
-            Debug.DrawLine(spawnRows[i].position, spawnRows[i].position + (Vector3.right * rowWidths[i]));
-            Debug.DrawLine(spawnRows[i].position, spawnRows[i].position - (Vector3.right * rowWidths[i]));
+            if (sp.IsViable)
+            {
+                Gizmos.color = Color.green;
+            }
+            else
+            {
+                Gizmos.color = Color.red;
+            }
+
+            Gizmos.DrawWireSphere(sp.transform.position, 0.5f);
         }
     }
 }

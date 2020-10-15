@@ -45,12 +45,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private float instabilityIncreaseRate = 2.0f;
 
-    [Header("Marble Spawning")]
-    [SerializeField]
-    private GameObject marblePrefab;
-    [SerializeField]
-    private Transform marbleSpawnPos;
-
     private void OnEnable()
     {
         if (_Instance == null)
@@ -66,7 +60,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PersistantData.instance.score = 0;
+        PersistantData.instance.ResetScore();
 
         int pickedPlayerCharacter = Random.Range(0, possiblePlayerCharacters.Length);
         for (int i = 0; i < possiblePlayerCharacters.Length; i++)
@@ -80,6 +74,8 @@ public class LevelManager : MonoBehaviour
                 possiblePlayerCharacters[i].SetActive(false);
             }
         }
+
+        TransitionScreenController.instance.FadeIn();
     }
 
     // Update is called once per frame
@@ -89,18 +85,10 @@ public class LevelManager : MonoBehaviour
         if (currentSpawnTime > timeToNextSpawn)
         {
             currentSpawnTime = 0;
-            timeToNextSpawn = baseSpawnTime - spawnTimeCurve.Evaluate((float)PersistantData.instance.score * 0.1f) * maxSpawnReduction;
+            timeToNextSpawn = baseSpawnTime - spawnTimeCurve.Evaluate((float)PersistantData.instance.totalMarbles * 0.1f) * maxSpawnReduction;
 
             AudienceSpawner.instance.SpawnAudienceMember();
         }
-    }
-
-    public void SpawnMarble()
-    {
-        GameObject newMarble = Instantiate(marblePrefab, this.transform);
-        newMarble.transform.position = marbleSpawnPos.transform.position;
-
-        PersistantData.instance.score++;
     }
 
     public void IncreaseInstability()

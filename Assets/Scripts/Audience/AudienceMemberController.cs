@@ -25,6 +25,7 @@ public class AudienceMemberController : MonoBehaviour
 
     // Timer
     [Header("Question Timer")]
+    public bool hasTimer = false;
     public float currentTime = 0.0f;
     [SerializeField]
     public float maxTime = 1.0f;
@@ -40,7 +41,8 @@ public class AudienceMemberController : MonoBehaviour
     // Question
     [Header("Question Handling")]
     public QuestionAnswersScriptableObject theQuestion;
-    public QuestionAnswersScriptableObject[] possibleQuestions;
+    public QuestionAnswersScriptableObject[] possibleStartQuestions;
+    public QuestionAnswersScriptableObject[] possibleProgressionQuestions;
 
     // Start is called before the first frame update
     void Start()
