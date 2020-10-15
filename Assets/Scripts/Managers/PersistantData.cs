@@ -7,9 +7,12 @@ public class PersistantData : MonoBehaviour
     // General HiScore
     public int totalMarbles = 0;
     private int hiScore;
-
     // Storing Each Marble Type
     private Dictionary<AnswerTypes, int> eachMarbles;
+
+    // Tutorial Handling
+    [SerializeField]
+    private int firstLoad = 0;
 
     // Singleton Design Pattern
     private static PersistantData _Instance;
@@ -38,11 +41,40 @@ public class PersistantData : MonoBehaviour
         }
         else
         {
-            Debug.Log("Instance Already Exists");
+            Debug.Log("Instance Already Exists, Destroying This...");
             Destroy(this.gameObject);
         }
     }
 
+    private void Start()
+    {
+        firstLoad = PlayerPrefs.GetInt("FirstLoad");
+    }
+
+
+    /*
+    ============================================================================================================================================================================================================================================================================================================
+    Game Tutorial Handling
+    ============================================================================================================================================================================================================================================================================================================
+    */
+    public bool CheckIfFirstPlay()
+    {
+        return firstLoad == 0 ? 
+            true : 
+            false;
+    }
+
+    public void FinishedTutorial()
+    {
+        firstLoad = 1;
+        PlayerPrefs.SetInt("FirstLoad", 1);
+    }
+
+    /*
+    ============================================================================================================================================================================================================================================================================================================
+    Game Score Handling
+    ============================================================================================================================================================================================================================================================================================================
+    */
     public void ResetScore()
     {
         // Resetting 

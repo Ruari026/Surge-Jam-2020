@@ -30,6 +30,8 @@ public class AudienceSpawner : MonoBehaviour
     [SerializeField]
     private List<SpawnPoint> allSpawnPoints;
     private List<SpawnPoint> availableSpawnPoints;
+    [SerializeField]
+    private Vector2 spawnLimits;
 
     private void OnEnable()
     {
@@ -51,7 +53,7 @@ public class AudienceSpawner : MonoBehaviour
         foreach (SpawnPoint sp in allSpawnPoints)
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(sp.transform.position);
-            if (screenPos.x > 0 && screenPos.x < Screen.width && screenPos.y > 0 && screenPos.y < Screen.height)
+            if ((screenPos.x > (Screen.width * spawnLimits.x)) && (screenPos.x < (Screen.width - (Screen.width * spawnLimits.x))) && (screenPos.y > (Screen.height * spawnLimits.y)) && (screenPos.y < (Screen.height - (Screen.height * spawnLimits.y))))
             {
                 availableSpawnPoints.Add(sp);
                 sp.IsViable = true;

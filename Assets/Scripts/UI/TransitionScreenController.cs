@@ -38,7 +38,7 @@ public class TransitionScreenController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Warning: Instance Already Exists, Destroying this...");
+            Debug.Log("Instance Already Exists, Destroying This...");
             Destroy(this.gameObject);
         }
     }
