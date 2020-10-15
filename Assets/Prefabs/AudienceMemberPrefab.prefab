@@ -255,7 +255,7 @@ MonoBehaviour:
   animController: {fileID: 9110709215468666366}
   hasTimer: 1
   currentTime: 0
-  maxTime: 10
+  maxTime: 15
   success: 0
   questionLeft: {fileID: 4654544626167112102}
   leftFill: {fileID: 9050120995347600451}
