@@ -88,7 +88,7 @@ public class QuestionUIManager : MonoBehaviour
     
     private IEnumerator DelayUIOpen()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.75f);
 
         theUI.SetActive(true);
         backgroundFade.SetActive(true);

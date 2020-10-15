@@ -18,10 +18,8 @@ public class AudienceFocusedState : AudienceState
 
     private IEnumerator StartAnim(AudienceMemberController theAudienceMember)
     {
-        theAudienceMember.animController.SetTrigger("Hide");
-        
-        theAudienceMember.questionLeft.SetActive(false);
-        theAudienceMember.questionRight.SetActive(false);
+        theAudienceMember.spriteAnimController.SetTrigger("Hide");
+        theAudienceMember.bubbleAnimController.SetTrigger("Interact");
 
         if (theAudienceMember.hasTimer)
         {
@@ -29,6 +27,9 @@ public class AudienceFocusedState : AudienceState
         }
 
         yield return new WaitForSeconds(0.5f);
+        
+        theAudienceMember.questionLeft.SetActive(false);
+        theAudienceMember.questionRight.SetActive(false);
 
         Vector3 targetPos = GameObject.FindGameObjectWithTag("FocusedPoint").transform.position;
         theAudienceMember.transform.position = targetPos;
@@ -39,7 +40,7 @@ public class AudienceFocusedState : AudienceState
         }
         theAudienceMember.focusedSprite.SetActive(true);
 
-        theAudienceMember.animController.SetTrigger("Show");
+        theAudienceMember.spriteAnimController.SetTrigger("Show");
     }
 
     public override void UpdateState(AudienceMemberController theAudienceMember)

@@ -30,7 +30,7 @@ public class AudienceExitState : AudienceState
 
         yield return new WaitForSeconds(0.5f);
 
-        theAudienceMember.animController.SetTrigger("Hide");
+        theAudienceMember.spriteAnimController.SetTrigger("Hide");
 
         yield return new WaitForSeconds(0.5f);
 

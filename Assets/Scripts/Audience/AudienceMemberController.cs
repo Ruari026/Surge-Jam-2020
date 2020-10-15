@@ -21,7 +21,8 @@ public class AudienceMemberController : MonoBehaviour
     public GameObject successSprite;
     public GameObject failSprite;
     public Color[] possibleColors;
-    public Animator animController;
+    public Animator spriteAnimController;
+    public Animator bubbleAnimController;
 
     // Timer
     [Header("Question Timer")]
