@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f1fdf0ce44fe848b5c514c378de2d7, type: 3}
   m_Name: Question26
   m_EditorClassIdentifier: 
-  question: 
+  question: What is your favourite colour?
   answers:
-  - answer: 
+  - answer: Yellow
+    type: 2
+    nextQuestion: -1
+  - answer: Red
     type: 0
-    nextQuestion: 0
-  - answer: 
-    type: 0
-    nextQuestion: 0
-  - answer: 
-    type: 0
-    nextQuestion: 0
-  - answer: 
-    type: 0
-    nextQuestion: 0
+    nextQuestion: -1
+  - answer: Blue
+    type: 4
+    nextQuestion: -1
+  - answer: Green
+    type: 3
+    nextQuestion: -1

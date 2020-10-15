@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37f1fdf0ce44fe848b5c514c378de2d7, type: 3}
-  m_Name: QuestionAnswerSet
+  m_Name: Question21
   m_EditorClassIdentifier: 
-  question: 
+  question: Who is your favourite Hindu god?
   answers:
-  - answer: 
-    type: 0
-    nextQuestion: 0
-  - answer: 
-    type: 0
-    nextQuestion: 0
-  - answer: 
-    type: 0
-    nextQuestion: 0
-  - answer: 
-    type: 0
-    nextQuestion: 0
+  - answer: Saraswati
+    type: 5
+    nextQuestion: -1
+  - answer: Durga
+    type: 4
+    nextQuestion: -1
+  - answer: Sarruma
+    type: 3
+    nextQuestion: -1
+  - answer: Hayagriva
+    type: 1
+    nextQuestion: -1
