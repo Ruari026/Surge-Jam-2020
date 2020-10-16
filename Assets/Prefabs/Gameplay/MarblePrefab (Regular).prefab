@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleMaterials:
-  - {fileID: 2100000, guid: d70e34fe89f00ea4e97921ed8627b61f, type: 2}
   - {fileID: 2100000, guid: bafab65e406e5044f8a5d7e8c403582a, type: 2}
+  - {fileID: 2100000, guid: d70e34fe89f00ea4e97921ed8627b61f, type: 2}
   - {fileID: 2100000, guid: 61b1d7014de38c549ada5aa70d1f2021, type: 2}
   - {fileID: 2100000, guid: af5e08bf164e2844e9ff7ff444fbabcf, type: 2}
   - {fileID: 2100000, guid: 1a188552e6f14d04281231d364fe1e59, type: 2}
