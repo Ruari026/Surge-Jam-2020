@@ -7,17 +7,18 @@ using UnityEngine.Audio;
 public class SetVolume : MonoBehaviour
 {
     public AudioMixer mixer;
+
     public Slider masterSlider;
     public Slider musicSlider;
     public Slider sfxSlider;
     
     private void OnEnable()
     {
-        mixer.GetFloat("MusicVol", out float startValue);
-        mixer.GetFloat("Music", out float startMusicVolume);
-        mixer.GetFloat("SFX", out float startSfxVolume);
+        mixer.GetFloat("MasterVol", out float startMasterValue);
+        mixer.GetFloat("MusicVol", out float startMusicVolume);
+        mixer.GetFloat("SFXVol", out float startSfxVolume);
 
-        masterSlider.value = ConvertToSliderValue(startValue);
+        masterSlider.value = ConvertToSliderValue(startMasterValue);
         musicSlider.value = ConvertToSliderValue(startMusicVolume);
         sfxSlider.value = ConvertToSliderValue(startSfxVolume);
     }
