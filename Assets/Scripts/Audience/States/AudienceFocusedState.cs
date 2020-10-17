@@ -6,6 +6,18 @@ public class AudienceFocusedState : AudienceState
 {
     public override void StartState(AudienceMemberController theAudienceMember)
     {
+        // Getting the question to show
+        if (theAudienceMember.useGlobalQuestionSet)
+        {
+            theAudienceMember.theQuestion = QuestionsManager.instance.GetQuestion();
+        }
+        else
+        {
+            int pickedQuestion = Random.Range(0, theAudienceMember.possibleStartQuestions.Length);
+            theAudienceMember.theQuestion = theAudienceMember.possibleStartQuestions[pickedQuestion];
+        }
+
+        // Showing Question To Player
         if (QuestionUIManager.instance.OpenQuestionUI(theAudienceMember))
         {
             theAudienceMember.StartCoroutine(this.StartAnim(theAudienceMember));

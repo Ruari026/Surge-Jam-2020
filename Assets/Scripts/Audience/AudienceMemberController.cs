@@ -41,6 +41,7 @@ public class AudienceMemberController : MonoBehaviour
 
     // Question
     [Header("Question Handling")]
+    public bool useGlobalQuestionSet = true;
     public QuestionAnswersScriptableObject theQuestion;
     public QuestionAnswersScriptableObject[] possibleStartQuestions;
     public QuestionAnswersScriptableObject[] possibleProgressionQuestions;

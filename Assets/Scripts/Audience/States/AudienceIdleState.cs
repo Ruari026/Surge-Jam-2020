@@ -37,10 +37,6 @@ public class AudienceIdleState : AudienceState
                 theAudienceMember.possibleIdleSprites[i].SetActive(false);
         }
 
-        // Randomize Question To Be Asked
-        int pickedQuestion = Random.Range(0, theAudienceMember.possibleStartQuestions.Length);
-        theAudienceMember.theQuestion = theAudienceMember.possibleStartQuestions[pickedQuestion];
-
         yield return new WaitForSeconds(1.0f);
 
         if (theAudienceMember.transform.position.x < 0)

@@ -251,7 +251,8 @@ MonoBehaviour:
   - {r: 0.21568629, g: 0.24313727, b: 0.2509804, a: 1}
   - {r: 0.28235295, g: 0.50980395, b: 0.5254902, a: 1}
   - {r: 0.7176471, g: 0.8352942, b: 0.8313726, a: 1}
-  animController: {fileID: 9110709215468666366}
+  spriteAnimController: {fileID: 0}
+  bubbleAnimController: {fileID: 0}
   hasTimer: 0
   currentTime: 0
   maxTime: 10
@@ -260,6 +261,7 @@ MonoBehaviour:
   leftFill: {fileID: 9050120995347600451}
   questionRight: {fileID: 100456895117831820}
   rightFill: {fileID: 1269287068216985721}
+  useGlobalQuestionSet: 0
   theQuestion: {fileID: 0}
   possibleStartQuestions:
   - {fileID: 11400000, guid: 576463323132e064db952c3f1f83df60, type: 2}
