@@ -39,6 +39,11 @@ public class QuestionsManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        reuseableQuestionSet = new List<QuestionAnswersScriptableObject>();
+    }
+
     public QuestionAnswersScriptableObject GetQuestion()
     {
         QuestionAnswersScriptableObject newQuestion = null;
