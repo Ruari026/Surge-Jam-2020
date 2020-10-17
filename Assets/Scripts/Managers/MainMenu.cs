@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public void Start()
+    {
+        TransitionScreenController.instance.FadeIn();
+    }
+
     public void PlayGame()
     {
         // Checks if this is the first load of the game

@@ -26,6 +26,7 @@ public class TransitionScreenController : MonoBehaviour
     private Animator theAnimController;
     [SerializeField]
     private bool startFadedIn;
+    private bool isFadedIn;
 
     private void OnEnable()
     {
@@ -35,6 +36,7 @@ public class TransitionScreenController : MonoBehaviour
             DontDestroyOnLoad(this);
 
             theAnimController.SetBool("StartIn", startFadedIn);
+            isFadedIn = startFadedIn;
         }
         else
         {
@@ -45,11 +47,19 @@ public class TransitionScreenController : MonoBehaviour
 
     public void FadeIn()
     {
-        theAnimController.SetTrigger("FadeIn");
+        if (!isFadedIn)
+        {
+            theAnimController.SetTrigger("FadeIn");
+            isFadedIn = true;
+        }
     }
 
     public void FadeOut()
     {
-        theAnimController.SetTrigger("FadeOut");
+        if (isFadedIn)
+        {
+            theAnimController.SetTrigger("FadeOut");
+            isFadedIn = false;
+        }
     }
 }

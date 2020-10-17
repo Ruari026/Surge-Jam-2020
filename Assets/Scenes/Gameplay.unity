@@ -697,17 +697,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!222 &101102031
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1152,6 +1141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &195448891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &215703853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1780,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &340203543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,6 +1826,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &357387142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,6 +1872,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &387972132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,6 +2796,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &611246901
 GameObject:
   m_ObjectHideFlags: 0
@@ -3150,6 +3151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &678842708
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,6 +3197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &703338405
 GameObject:
   m_ObjectHideFlags: 0
@@ -3238,6 +3243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &704001894
 GameObject:
   m_ObjectHideFlags: 0
@@ -3360,6 +3367,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &708988964
 GameObject:
   m_ObjectHideFlags: 0
@@ -3770,6 +3779,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &740161104
 GameObject:
   m_ObjectHideFlags: 0
@@ -4194,6 +4205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &863580921
 GameObject:
   m_ObjectHideFlags: 0
@@ -4238,6 +4251,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &876250399
 GameObject:
   m_ObjectHideFlags: 0
@@ -4282,6 +4297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &889351448
 GameObject:
   m_ObjectHideFlags: 0
@@ -4326,6 +4343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &916690092
 GameObject:
   m_ObjectHideFlags: 0
@@ -4480,6 +4499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &930853933
 GameObject:
   m_ObjectHideFlags: 0
@@ -4720,6 +4741,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &964770608
 GameObject:
   m_ObjectHideFlags: 0
@@ -4764,6 +4787,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &965618859
 GameObject:
   m_ObjectHideFlags: 0
@@ -4808,6 +4833,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &968868639
 GameObject:
   m_ObjectHideFlags: 0
@@ -5073,6 +5100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1007919036
 GameObject:
   m_ObjectHideFlags: 0
@@ -5411,6 +5440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1139701189
 GameObject:
   m_ObjectHideFlags: 0
@@ -5533,6 +5564,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1161572857
 GameObject:
   m_ObjectHideFlags: 0
@@ -6413,7 +6446,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!1 &1201780964
 GameObject:
   m_ObjectHideFlags: 0
@@ -6763,6 +6796,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1317108715
 GameObject:
   m_ObjectHideFlags: 0
@@ -7361,6 +7396,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1463158679
 GameObject:
   m_ObjectHideFlags: 0
@@ -7405,6 +7442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1514492216
 GameObject:
   m_ObjectHideFlags: 0
@@ -7560,6 +7599,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1542318931
 GameObject:
   m_ObjectHideFlags: 0
@@ -7636,7 +7677,7 @@ MonoBehaviour:
   - {fileID: 1534525526}
   - {fileID: 190928760}
   - {fileID: 596521154}
-  spawnLimits: {x: 0.1, y: 0}
+  spawnLimits: {x: 0.09, y: 0}
 --- !u!1 &1543663558
 GameObject:
   m_ObjectHideFlags: 0
@@ -7837,6 +7878,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1575525584
 GameObject:
   m_ObjectHideFlags: 0
@@ -8293,6 +8336,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1636512167
 GameObject:
   m_ObjectHideFlags: 0
@@ -8404,6 +8449,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1657671425
 GameObject:
   m_ObjectHideFlags: 0
@@ -8572,6 +8619,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1679356542
 GameObject:
   m_ObjectHideFlags: 0
@@ -9326,6 +9375,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1771692724
 GameObject:
   m_ObjectHideFlags: 0
@@ -9722,6 +9773,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1802309657
 GameObject:
   m_ObjectHideFlags: 0
@@ -10391,6 +10444,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &1937031093
 GameObject:
   m_ObjectHideFlags: 0
@@ -11305,6 +11360,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsViable: 0
+  IsBeingUsed: 0
+  spawnedAudience: {fileID: 0}
 --- !u!1 &2109383176
 GameObject:
   m_ObjectHideFlags: 0

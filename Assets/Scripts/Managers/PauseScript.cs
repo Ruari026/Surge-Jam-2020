@@ -29,6 +29,15 @@ public class PauseScript : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        StartCoroutine(WaitThenReturn());
+    }
+
+    private IEnumerator WaitThenReturn()
+    {
+        TransitionScreenController.instance.FadeOut();
+
+        yield return new WaitForSecondsRealtime(0.75f);
+
         Time.timeScale = 1.0f;
         SceneManager.LoadScene("Main_Menu");
     }
