@@ -67,23 +67,48 @@ public class AudienceSpawner : MonoBehaviour
 
     public void SpawnAudienceMember()
     {
-        GameObject newAudienceMember = Instantiate(audienceMemberPrefab, this.transform);
+        List<SpawnPoint> freeSpawns = new List<SpawnPoint>();
+        foreach (SpawnPoint sp in availableSpawnPoints)
+        {
+            if (!sp.IsBeingUsed)
+            {
+                freeSpawns.Add(sp);
+            }
+        }
 
-        Vector3 distance = Vector3.zero;
+        if (freeSpawns.Count > 0)
+        {
+            AudienceMemberController newAudienceMember = Instantiate(audienceMemberPrefab, this.transform).GetComponent<AudienceMemberController>();
 
-        // Depth Position
-        int pickedSpawn = Random.Range(0, availableSpawnPoints.Count);
-        newAudienceMember.transform.position = availableSpawnPoints[pickedSpawn].transform.position;
-        newAudienceMember.transform.rotation = Quaternion.identity;
+            // Setting Position
+            int pickedSpawn = Random.Range(0, freeSpawns.Count);
+            SpawnPoint spawnPoint = freeSpawns[pickedSpawn];
+
+            newAudienceMember.transform.position = freeSpawns[pickedSpawn].transform.position;
+            newAudienceMember.transform.rotation = Quaternion.identity;
+
+            // Preventing Spawn Points from being used by more than one audience member
+            spawnPoint.IsBeingUsed = true;
+            spawnPoint.spawnedAudience = newAudienceMember;
+        }
+        else
+        {
+            // All Spawn Point Are Currently Being Used
+            Debug.Log("Can't spawn audience member, all spawnpoints are being used");
+        }
     }
 
     private void OnDrawGizmos()
     {
         foreach (SpawnPoint sp in allSpawnPoints)
         {
-            if (sp.IsViable)
+            if (sp.IsViable && !sp.IsBeingUsed)
             {
                 Gizmos.color = Color.green;
+            }
+            else if (sp.IsViable && sp.IsBeingUsed)
+            {
+                Gizmos.color = Color.yellow;
             }
             else
             {

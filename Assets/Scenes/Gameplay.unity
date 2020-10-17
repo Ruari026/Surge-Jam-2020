@@ -1057,7 +1057,7 @@ RectTransform:
   m_GameObject: {fileID: 185727979}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1170973557}
   m_RootOrder: 0
@@ -3805,7 +3805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -25.00003, y: -175}
+  m_AnchoredPosition: {x: -25, y: -175}
   m_SizeDelta: {x: -50, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &740161106
@@ -4091,7 +4091,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -25.00003, y: -100}
+  m_AnchoredPosition: {x: -25, y: -100}
   m_SizeDelta: {x: -50, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &853322212
@@ -6001,7 +6001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1169174590
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6133,7 +6133,7 @@ RectTransform:
   m_GameObject: {fileID: 1170973556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 185727980}
   m_Father: {fileID: 1802309658}
@@ -6141,7 +6141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 35, y: 0}
+  m_AnchoredPosition: {x: -35, y: 0}
   m_SizeDelta: {x: -70, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1170973558
@@ -9758,7 +9758,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -75}
-  m_SizeDelta: {x: -50, y: 179.58592}
+  m_SizeDelta: {x: -50, y: 145.49757}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1802309659
 MonoBehaviour:
@@ -11531,15 +11531,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5001656513935651377, guid: 6a123bfe302182b46abdecb86799edfa,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 13538281}
     - target: {fileID: 5001656513935651379, guid: 6a123bfe302182b46abdecb86799edfa,
         type: 3}
       propertyPath: m_Name
       value: AnswerButtonPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001656513935651379, guid: 6a123bfe302182b46abdecb86799edfa,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a123bfe302182b46abdecb86799edfa, type: 3}

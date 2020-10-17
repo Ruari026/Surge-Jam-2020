@@ -175,8 +175,12 @@ public class QuestionUIManager : MonoBehaviour
                 backgroundFade.SetActive(false);
                 timerParent.SetActive(false);
             }
-        }
-            
+        }   
+    }
+
+    private void DelayUIClose()
+    {
+
     }
 
     public void SetUIFields(QuestionAnswersScriptableObject set)
