@@ -250,7 +250,7 @@ MonoBehaviour:
   - {r: 0.93781, g: 0.5970096, b: 0.9811321, a: 1}
   spriteAnimController: {fileID: 9110709215468666366}
   bubbleAnimController: {fileID: 6188953065363168513}
-  hasTimer: 0
+  hasTimer: 1
   currentTime: 0
   maxTime: 15
   success: 0
