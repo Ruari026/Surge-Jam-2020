@@ -18,7 +18,7 @@ public class AudienceFocusedState : AudienceState
         }
 
         // Showing Question To Player
-        if (QuestionUIManager.instance.OpenQuestionUI(theAudienceMember))
+        if (QuestionUIManager.instance.OpenUI(theAudienceMember))
         {
             theAudienceMember.StartCoroutine(this.StartAnim(theAudienceMember));
         }
@@ -30,6 +30,7 @@ public class AudienceFocusedState : AudienceState
 
     private IEnumerator StartAnim(AudienceMemberController theAudienceMember)
     {
+        // Animation for moving away from background
         theAudienceMember.spriteAnimController.SetTrigger("Hide");
         theAudienceMember.bubbleAnimController.SetTrigger("Interact");
 
@@ -43,16 +44,26 @@ public class AudienceFocusedState : AudienceState
         theAudienceMember.questionLeft.SetActive(false);
         theAudienceMember.questionRight.SetActive(false);
 
+        // Moving to set position in world for asking question to the user
         Vector3 targetPos = GameObject.FindGameObjectWithTag("FocusedPoint").transform.position;
         theAudienceMember.transform.position = targetPos;
-        
+        // Changing sprite to talking sprite anim
         foreach(GameObject g in theAudienceMember.possibleIdleSprites)
         {
             g.SetActive(false);
         }
         theAudienceMember.focusedSprite.SetActive(true);
-
+        
+        // Anim for showing up to new focused position
         theAudienceMember.spriteAnimController.SetTrigger("Show");
+        // Changing layer so that the audience member appears in front of the background fade (foreground layer == 10)
+        foreach (GameObject g in theAudienceMember.possibleIdleSprites)
+        {
+            g.layer = 10;
+        }
+        theAudienceMember.focusedSprite.layer = 10;
+        theAudienceMember.successSprite.layer = 10;
+        theAudienceMember.failSprite.layer = 10;
     }
 
     public override void UpdateState(AudienceMemberController theAudienceMember)
@@ -81,7 +92,7 @@ public class AudienceFocusedState : AudienceState
 
                 theAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
 
-                QuestionUIManager.instance.CloseQuestionUI(false);
+                QuestionUIManager.instance.CloseUI(false);
             }
         }
     }
