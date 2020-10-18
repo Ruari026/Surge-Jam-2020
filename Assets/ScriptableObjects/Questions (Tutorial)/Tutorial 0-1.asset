@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Tutorial 0-1
   m_EditorClassIdentifier: 
   question: Great! You've just gained a marble of inspiration
-  answers: []
+  answers:
+  - answer: 
+    type: 6
+    nextQuestion: -1

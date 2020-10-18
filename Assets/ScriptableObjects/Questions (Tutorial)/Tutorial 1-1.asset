@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Tutorial 1-1
   m_EditorClassIdentifier: 
   question: Take too long, and you'll lose your marbles
-  answers: []
+  answers:
+  - answer: 
+    type: 6
+    nextQuestion: -1

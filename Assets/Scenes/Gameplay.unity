@@ -2240,7 +2240,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 13538281}
-        m_MethodName: CloseUI
+        m_MethodName: UIInteract
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4014,7 +4014,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -25.000061, y: -175}
+  m_AnchoredPosition: {x: -25, y: -175}
   m_SizeDelta: {x: -50, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &740161106
@@ -4156,7 +4156,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 13538281}
-        m_MethodName: CloseUI
+        m_MethodName: UIInteract
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4300,7 +4300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -25.000061, y: -100}
+  m_AnchoredPosition: {x: -25, y: -100}
   m_SizeDelta: {x: -50, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &853322212
@@ -6066,7 +6066,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 13538281}
-        m_MethodName: CloseUI
+        m_MethodName: UIInteract
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6494,7 +6494,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 13538281}
-        m_MethodName: CloseUI
+        m_MethodName: UIInteract
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6977,7 +6977,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 13538281}
-        m_MethodName: CloseUI
+        m_MethodName: UIInteract
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8436,7 +8436,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 13538281}
-        m_MethodName: CloseUI
+        m_MethodName: UIInteract
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9785,7 +9785,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 13538281}
-        m_MethodName: CloseUI
+        m_MethodName: UIInteract
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10552,7 +10552,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 13538281}
-        m_MethodName: CloseUI
+        m_MethodName: UIInteract
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11601,7 +11601,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 13538281}
-        m_MethodName: CloseUI
+        m_MethodName: UIInteract
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
