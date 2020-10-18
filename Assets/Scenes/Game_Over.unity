@@ -3709,6 +3709,7 @@ MonoBehaviour:
   timeBetweenFacts: 6
   theFacts:
   - {fileID: 946130803}
+  - {fileID: 0}
   timeBetweenSpawns: 2
 --- !u!1 &1065381095
 GameObject:
