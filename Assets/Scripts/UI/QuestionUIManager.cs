@@ -178,9 +178,9 @@ public class QuestionUIManager : MonoBehaviour
                 // Load Next Question Answer Set
                 int nextQuestion = interactingAudienceMember.theQuestion.answers[answerNumber].nextQuestion;
                 QuestionAnswersScriptableObject nextSet = interactingAudienceMember.possibleProgressionQuestions[nextQuestion];
-
                 interactingAudienceMember.theQuestion = nextSet;
 
+                // Checking if the next ui needs to be question answer or general dialogue
                 UpdateQuestionAnswerUI(interactingAudienceMember.theQuestion);
             }
             else
