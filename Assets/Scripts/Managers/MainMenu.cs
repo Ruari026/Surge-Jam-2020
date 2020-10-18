@@ -16,14 +16,18 @@ public class MainMenu : MonoBehaviour
         if (PersistantData.instance.CheckIfFirstPlay())
         {
             // Play Tutorial
-            Debug.Log("Needs To Play Tutorial");
+            StartCoroutine(WaitAndPlayGame("Tutorial"));
         }
         else
         {
             // Go Straight To Main Gameplay
+            StartCoroutine(WaitAndPlayGame("GamePlay"));
         }
+    }
 
-        StartCoroutine(WaitAndPlayGame("GamePlay"));
+    public void PlayTutorial()
+    {
+        StartCoroutine(WaitAndPlayGame("Tutorial"));
     }
 
     private IEnumerator WaitAndPlayGame(string nextScene)
