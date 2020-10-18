@@ -1003,7 +1003,7 @@ GameObject:
   - component: {fileID: 2443257657491881903}
   - component: {fileID: 2558646795346784748}
   m_Layer: 9
-  m_Name: AudienceMemberPrefab (Tutorial Ver)
+  m_Name: AudienceMemberPrefab (Tutorial Ver 2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1066,12 +1066,9 @@ MonoBehaviour:
   useGlobalQuestionSet: 0
   theQuestion: {fileID: 0}
   possibleStartQuestions:
-  - {fileID: 11400000, guid: 576463323132e064db952c3f1f83df60, type: 2}
-  possibleProgressionQuestions:
-  - {fileID: 11400000, guid: 41a0a9436763e1d41a59b732bf82681a, type: 2}
-  - {fileID: 11400000, guid: 25bca7cd019464347a9994a648f1d3ee, type: 2}
-  - {fileID: 11400000, guid: f1d48e16058a1094e8848457118da2da, type: 2}
   - {fileID: 11400000, guid: d90af7e0198619b4fa006bad23a5f1bf, type: 2}
+  possibleProgressionQuestions:
+  - {fileID: 11400000, guid: 2f7e5938a390c3845aadcbca45bee129, type: 2}
 --- !u!95 &2558646795346784748
 Animator:
   serializedVersion: 3

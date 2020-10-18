@@ -67,6 +67,11 @@ public class AudienceSpawner : MonoBehaviour
 
     public void SpawnAudienceMember()
     {
+        SpawnAudienceMember(audienceMemberPrefab);
+    }
+
+    public void SpawnAudienceMember(GameObject specificAudienceMemberPrefab)
+    {
         List<SpawnPoint> freeSpawns = new List<SpawnPoint>();
         foreach (SpawnPoint sp in availableSpawnPoints)
         {
@@ -78,7 +83,7 @@ public class AudienceSpawner : MonoBehaviour
 
         if (freeSpawns.Count > 0)
         {
-            AudienceMemberController newAudienceMember = Instantiate(audienceMemberPrefab, this.transform).GetComponent<AudienceMemberController>();
+            AudienceMemberController newAudienceMember = Instantiate(specificAudienceMemberPrefab, this.transform).GetComponent<AudienceMemberController>();
 
             // Setting Position
             int pickedSpawn = Random.Range(0, freeSpawns.Count);

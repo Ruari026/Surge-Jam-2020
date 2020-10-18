@@ -31,7 +31,11 @@ public class TutorialManager : MonoBehaviour
     private float currentSpawnTime = 0;
     private bool hasSpawned = false;
     [SerializeField]
-    private float timeToNextSpawn = 1.0f;
+    private float timeToFirstSpawn = 1.0f;
+    [SerializeField]
+    private int nextSpawningAudience = 0;
+    [SerializeField]
+    private GameObject[] audienceMemberPrefabs;
 
     [Header("Platform Handling")]
     [SerializeField]
@@ -49,6 +53,15 @@ public class TutorialManager : MonoBehaviour
         {
             Debug.LogError("ERROR: Instance Already Exists");
         }
+
+        QuestionUIManager.OnEventDialogueFinished += SpawnNextTutorialAudience;
+        QuestionUIManager.OnEventDialogueFinished += CheckIfEndTutorial;
+    }
+
+    private void OnDisable()
+    {
+        QuestionUIManager.OnEventDialogueFinished -= SpawnNextTutorialAudience;
+        QuestionUIManager.OnEventDialogueFinished -= CheckIfEndTutorial;
     }
 
     // Start is called before the first frame update
@@ -73,16 +86,27 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Timer for spawning first audience member
         if (!hasSpawned)
         {
             currentSpawnTime += Time.deltaTime;
-
-            if (currentSpawnTime > timeToNextSpawn)
+            if (currentSpawnTime > timeToFirstSpawn)
             {
-                AudienceSpawner.instance.SpawnAudienceMember();
                 hasSpawned = true;
+                SpawnNextTutorialAudience();
             }
         }
+    }
+
+    private void SpawnNextTutorialAudience()
+    {
+        if (nextSpawningAudience < audienceMemberPrefabs.Length)
+        {
+            GameObject nextAudienceMember = audienceMemberPrefabs[nextSpawningAudience];
+            AudienceSpawner.instance.SpawnAudienceMember(nextAudienceMember);
+        }
+
+        nextSpawningAudience++;
     }
 
     public void RestartTutorial()
@@ -91,8 +115,19 @@ public class TutorialManager : MonoBehaviour
         hasSpawned = false;
     }
 
-    public void EndTutorial()
+    public void CheckIfEndTutorial()
     {
-        SceneManager.LoadScene("Game_Over");
+        if (nextSpawningAudience >= audienceMemberPrefabs.Length)
+        {
+            StartCoroutine(DelaySceneChange());
+        }
+    }
+    private IEnumerator DelaySceneChange()
+    {
+        TransitionScreenController.instance.FadeOut();
+
+        yield return new WaitForSecondsRealtime(0.75f);
+
+        SceneManager.LoadScene("Main_Menu");
     }
 }

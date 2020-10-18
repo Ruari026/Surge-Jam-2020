@@ -22,6 +22,9 @@ public class QuestionUIManager : MonoBehaviour
         }
     }
 
+    public delegate void EventDialogueFinished();
+    public static EventDialogueFinished OnEventDialogueFinished;
+
     private AudienceMemberController interactingAudienceMember;
 
     [Header("General UI Elements")]
@@ -195,6 +198,8 @@ public class QuestionUIManager : MonoBehaviour
                 backgroundFade.SetActive(false);
                 timerParent.SetActive(false);
             }
+
+            OnEventDialogueFinished();
         }   
     }
 
