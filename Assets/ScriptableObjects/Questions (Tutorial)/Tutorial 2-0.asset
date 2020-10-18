@@ -15,14 +15,14 @@ MonoBehaviour:
   question: Keep your phone balanced so the marbles don't fall out!
   answers:
   - answer: Bye bye marbles
-    type: 6
+    type: 3
     nextQuestion: 0
   - answer: Don't tell me what to do
-    type: 6
+    type: 3
     nextQuestion: 0
   - answer: Aww but I want to keep them
-    type: 6
+    type: 3
     nextQuestion: 0
   - answer: Ah, like my real brain...
-    type: 6
+    type: 3
     nextQuestion: 0
