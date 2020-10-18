@@ -16,7 +16,7 @@ MonoBehaviour:
   answers:
   - answer: I'm Ready
     type: 6
-    nextQuestion: 0
+    nextQuestion: -1
   - answer: Tell me one more time!
     type: 6
-    nextQuestion: 0
+    nextQuestion: -1

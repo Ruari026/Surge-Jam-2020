@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Tutorial 2-1
   m_EditorClassIdentifier: 
   question: If even one marble falls it's game over!
-  answers: []
+  answers:
+  - answer: 
+    type: 6
+    nextQuestion: -1

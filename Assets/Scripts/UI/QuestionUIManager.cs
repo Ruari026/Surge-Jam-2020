@@ -112,19 +112,9 @@ public class QuestionUIManager : MonoBehaviour
         {
             interactingAudienceMember = openingAudienceMember;
 
-            // Determining if the UI needs to open as a dialogue UI or question answer set UI
-            if (interactingAudienceMember.theQuestion.answers.Length > 0)
-            {
-                // Set has answer options so open up question answer UI
-                UpdateQuestionAnswerUI(interactingAudienceMember.theQuestion);
-                StartCoroutine(OpenQuestionAnswerUI());
-            }
-            else
-            {
-                // No answer options so open as general dialogue
-                UpdateDialogueUI(interactingAudienceMember.theQuestion);
-                StartCoroutine(OpenDialogueUI());
-            }
+            // Set has answer options so open up question answer UI
+            UpdateUI(interactingAudienceMember.theQuestion);
+            StartCoroutine(DelayUIOpen(interactingAudienceMember.theQuestion));
 
             return true;
         }
@@ -134,30 +124,7 @@ public class QuestionUIManager : MonoBehaviour
         }
     }
 
-    public void CloseUI(bool questionAnswered)
-    {
-        // Audience Member Handling
-        if (interactingAudienceMember != null)
-        {
-            interactingAudienceMember.success = true;
-            interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
-            interactingAudienceMember = null;
-        }
-        
-        if (questionAnswered)
-        {
-            // Add a marble
-            MarbleSpawner.instance.SpawnMarble();
-            PersistantData.instance.AddScore();
-        }
-
-        // Close UI
-        theQuestionAnswerUI.SetActive(false);
-        backgroundFade.SetActive(false);
-        timerParent.SetActive(false);
-    }
-
-    public void CloseUI(int answerNumber)
+    public void UIInteract(int answerNumber)
     {
         // Audience Member Handling
         if (interactingAudienceMember != null)
@@ -178,42 +145,35 @@ public class QuestionUIManager : MonoBehaviour
                 // Load Next Question Answer Set
                 int nextQuestion = interactingAudienceMember.theQuestion.answers[answerNumber].nextQuestion;
                 QuestionAnswersScriptableObject nextSet = interactingAudienceMember.possibleProgressionQuestions[nextQuestion];
-                interactingAudienceMember.theQuestion = nextSet;
-
-                // Checking if the next ui needs to be question answer or general dialogue
-                UpdateQuestionAnswerUI(interactingAudienceMember.theQuestion);
+                ProgressUI(nextSet);
             }
             else
             {
-                // End of dialogue tree
-                interactingAudienceMember.success = true;
-                interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
-
-                interactingAudienceMember = null;
-
-                // Close All UI
-                theQuestionAnswerUI.SetActive(false);
-                theDialogueUI.SetActive(false);
-
-                backgroundFade.SetActive(false);
-                timerParent.SetActive(false);
-
-                OnEventDialogueFinished();
+                CloseUI(true);
             }
-        }   
+        }
     }
 
-
-    /*
-    ========================================================================================================================================================================================================
-    Handling Dialogue Sets
-    ========================================================================================================================================================================================================
-    */
-    private IEnumerator OpenDialogueUI()
+    private void ProgressUI(QuestionAnswersScriptableObject nextSet)
     {
-        yield return new WaitForSeconds(0.75f);
+        interactingAudienceMember.theQuestion = nextSet;
 
-        theDialogueUI.SetActive(true);
+        // Closing Existing UI
+        theQuestionAnswerUI.SetActive(false);
+        theDialogueUI.SetActive(false);
+
+        // Checking if the next UI needs to be question answer or general dialogue
+        UpdateUI(interactingAudienceMember.theQuestion);
+
+        // Showing relevant UI
+        if (nextSet.answers.Length > 1)
+        {
+            theQuestionAnswerUI.SetActive(true);
+        }
+        else
+        {
+            theDialogueUI.SetActive(true);
+        }
         backgroundFade.SetActive(true);
 
         if (hasTimer)
@@ -222,9 +182,22 @@ public class QuestionUIManager : MonoBehaviour
         }
     }
 
-    private void UpdateDialogueUI(QuestionAnswersScriptableObject set)
+    public void CloseUI(bool questionAnswered)
     {
-        dialogueText.text = set.question;
+        // End of dialogue tree
+        interactingAudienceMember.success = questionAnswered;
+        interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
+
+        interactingAudienceMember = null;
+
+        // Close All UI
+        theQuestionAnswerUI.SetActive(false);
+        theDialogueUI.SetActive(false);
+
+        backgroundFade.SetActive(false);
+        timerParent.SetActive(false);
+
+        OnEventDialogueFinished?.Invoke();
     }
 
 
@@ -233,11 +206,18 @@ public class QuestionUIManager : MonoBehaviour
     Handling Question Answer Sets
     ========================================================================================================================================================================================================
     */
-    private IEnumerator OpenQuestionAnswerUI()
+    private IEnumerator DelayUIOpen(QuestionAnswersScriptableObject set)
     {
         yield return new WaitForSeconds(0.75f);
 
-        theQuestionAnswerUI.SetActive(true);
+        if (set.answers.Length > 1)
+        {
+            theQuestionAnswerUI.SetActive(true);
+        }
+        else
+        {
+            theDialogueUI.SetActive(true);
+        }
         backgroundFade.SetActive(true);
 
         if (hasTimer)
@@ -246,11 +226,13 @@ public class QuestionUIManager : MonoBehaviour
         }
     }
 
-    private void UpdateQuestionAnswerUI(QuestionAnswersScriptableObject set)
+    private void UpdateUI(QuestionAnswersScriptableObject set)
     {
         // Updating UI For Question
         questionText.text = set.question;
+        dialogueText.text = set.question;
 
+        // Answer Option UI's
         for (int i = 0; i < set.answers.Length; i++)
         {
             switch (i)
@@ -277,11 +259,12 @@ public class QuestionUIManager : MonoBehaviour
             }
         }
 
-        // Showing Relevant UI
+        // Reset All UI's
         twoAnswerUI.SetActive(false);
         threeAnswerUI.SetActive(false);
         fourAnswerUI.SetActive(false);
 
+        // Showing Relevant UI
         switch (set.answers.Length)
         {
             case 2:

@@ -54,14 +54,14 @@ public class TutorialManager : MonoBehaviour
             Debug.LogError("ERROR: Instance Already Exists");
         }
 
-        QuestionUIManager.OnEventDialogueFinished += SpawnNextTutorialAudience;
         QuestionUIManager.OnEventDialogueFinished += CheckIfEndTutorial;
+        QuestionUIManager.OnEventDialogueFinished += SpawnNextTutorialAudience;
     }
 
     private void OnDisable()
     {
-        QuestionUIManager.OnEventDialogueFinished -= SpawnNextTutorialAudience;
         QuestionUIManager.OnEventDialogueFinished -= CheckIfEndTutorial;
+        QuestionUIManager.OnEventDialogueFinished -= SpawnNextTutorialAudience;
     }
 
     // Start is called before the first frame update
