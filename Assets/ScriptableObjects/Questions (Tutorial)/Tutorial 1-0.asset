@@ -15,14 +15,14 @@ MonoBehaviour:
   question: Make sure you answer honestly
   answers:
   - answer: Can you tell?
-    type: 5
+    type: 6
     nextQuestion: 0
   - answer: Seems simple enough
-    type: 5
+    type: 6
     nextQuestion: 0
   - answer: A yellow marble, huh?
-    type: 5
+    type: 6
     nextQuestion: 0
   - answer: So I can press here?
-    type: 5
+    type: 6
     nextQuestion: 0

@@ -64,11 +64,6 @@ public class PersistantData : MonoBehaviour
             false;
     }
 
-    public bool HasAlreadyFinishedTutorial()
-    {
-        return (firstLoad == 1) ? true : false;
-    }
-
     public void FinishedTutorial()
     {
         firstLoad = 1;
@@ -170,20 +165,5 @@ public class PersistantData : MonoBehaviour
         answerPercentage = percentage;
 
         return answerType;
-    }
-
-    /*
-    ============================================================================================================================================================================================================================================================================================================
-    Persistant Data Reset
-    ============================================================================================================================================================================================================================================================================================================
-    */
-    public void ResetSavedHiScore()
-    {
-        PlayerPrefs.SetInt("HiScore", 0);
-    }
-
-    public void ResetTutorialSave()
-    {
-        PlayerPrefs.SetInt("FirstLoad", 0);
     }
 }
