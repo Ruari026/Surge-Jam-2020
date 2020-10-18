@@ -68,6 +68,7 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         PersistantData.instance.ResetScore();
+        TransitionScreenController.instance.FadeIn();
 
         int pickedPlayerCharacter = Random.Range(0, possiblePlayerCharacters.Length);
         for (int i = 0; i < possiblePlayerCharacters.Length; i++)

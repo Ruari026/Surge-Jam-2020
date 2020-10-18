@@ -197,9 +197,9 @@ public class QuestionUIManager : MonoBehaviour
 
                 backgroundFade.SetActive(false);
                 timerParent.SetActive(false);
-            }
 
-            OnEventDialogueFinished();
+                OnEventDialogueFinished();
+            }
         }   
     }
 
