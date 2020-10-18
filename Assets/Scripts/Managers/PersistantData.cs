@@ -64,6 +64,11 @@ public class PersistantData : MonoBehaviour
             false;
     }
 
+    public bool HasAlreadyFinishedTutorial()
+    {
+        return (firstLoad == 1) ? true : false;
+    }
+
     public void FinishedTutorial()
     {
         firstLoad = 1;
