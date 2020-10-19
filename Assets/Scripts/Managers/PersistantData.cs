@@ -172,6 +172,67 @@ public class PersistantData : MonoBehaviour
         return answerType;
     }
 
+    public AnswerTypes GetMostPickedAnswerType(out int marbleAmount)
+    {
+        AnswerTypes answerType = AnswerTypes.RELATIONSHIPS;
+        if (eachMarbles == null)
+            ResetScore();
+        int answerAmount = eachMarbles[answerType];
+
+        foreach (KeyValuePair<AnswerTypes, int> pair in eachMarbles)
+        {
+            if (pair.Value > answerAmount)
+            {
+                answerType = pair.Key;
+                answerAmount = pair.Value;
+            }
+        }
+
+        marbleAmount = answerAmount;
+
+        return answerType;
+    }
+
+    public int GetMostPickedMarbleAmount()
+    {
+        AnswerTypes answerType = AnswerTypes.RELATIONSHIPS;
+        if (eachMarbles == null)
+            ResetScore();
+        int answerAmount = eachMarbles[answerType];
+
+        foreach (KeyValuePair<AnswerTypes, int> pair in eachMarbles)
+        {
+            if (pair.Value > answerAmount)
+            {
+                answerType = pair.Key;
+                answerAmount = pair.Value;
+            }
+        }
+
+        return answerAmount;
+    }
+
+    public float GetMostPickedAnswerPercentage()
+    {
+        AnswerTypes answerType = AnswerTypes.RELATIONSHIPS;
+        if (eachMarbles == null)
+            ResetScore();
+        int answerAmount = eachMarbles[answerType];
+
+        foreach (KeyValuePair<AnswerTypes, int> pair in eachMarbles)
+        {
+            if (pair.Value > answerAmount)
+            {
+                answerType = pair.Key;
+                answerAmount = pair.Value;
+            }
+        }
+
+        float percentage = (float)answerAmount / totalMarbles;
+        return percentage;
+    }
+
+
     /*
     ============================================================================================================================================================================================================================================================================================================
     Persistant Data Reset
