@@ -18,7 +18,9 @@ public class GameOver : MonoBehaviour
     private float currentFactTime;
     private int currentShownFact = 0;
     [SerializeField]
-    public GameObject[] theFacts;
+    public List<GameObject> factsToShow = new List<GameObject>();
+    [SerializeField]
+    public FactUIManager[] allPossibleFacts;
 
     [Header("Background Marbles Handling")]
     [SerializeField]
@@ -32,32 +34,12 @@ public class GameOver : MonoBehaviour
         PersistantData persistantData = PersistantData.instance;
         persistantData.SetHighScore(persistantData.totalMarbles);
 
-        // Handling HiScore
+        // Handling HiScore Fact
         hiscoreText.text = persistantData.GetHighScore().ToString() + "- Marbles";
         finalScoreText.text = persistantData.totalMarbles.ToString() + "- Marbles";
 
         // Handling Marble Type Analysis
-        AnswerTypes mostPicked = persistantData.GetMostPickedAnswerType(out float answerPercentage);
-        switch (mostPicked)
-        {
-            case AnswerTypes.RELATIONSHIPS:
-                break;
-
-            case AnswerTypes.EDUCATION:
-                break;
-
-            case AnswerTypes.ECONOMY:
-                break;
-
-            case AnswerTypes.NATURE:
-                break;
-
-            case AnswerTypes.HUMANITY:
-                break;
-
-            case AnswerTypes.ARTS:
-                break;
-        }
+        PickFactsToShow();
         SetupMarbleStack();
     }
 
@@ -73,18 +55,36 @@ public class GameOver : MonoBehaviour
     Marble Analysis Handling
     ========================================================================================================================================================================================================
     */
+    private void PickFactsToShow()
+    {
+        AnswerTypes mostMarbleType = PersistantData.instance.GetMostPickedAnswerType();
+
+        List<FactUIManager> possibleFacts = new List<FactUIManager>();
+
+        foreach (FactUIManager fact in allPossibleFacts)
+        {
+            if (fact.factType == mostMarbleType)
+            {
+                fact.UpdateFact();
+                possibleFacts.Add(fact);
+            }
+        }
+
+        factsToShow.Add(possibleFacts[Random.Range(0, possibleFacts.Count)].gameObject);
+    }
+
     private void RunGameOverFactsAnim()
     {
         currentFactTime -= Time.deltaTime;
         if (currentFactTime <= 0)
         {
-            GameObject current = theFacts[currentShownFact];
+            GameObject current = factsToShow[currentShownFact];
 
             currentShownFact++;
-            if (currentShownFact >= theFacts.Length)
+            if (currentShownFact >= factsToShow.Count)
                 currentShownFact = 0;
 
-            GameObject next = theFacts[currentShownFact];
+            GameObject next = factsToShow[currentShownFact];
 
             StartCoroutine(ChangeBetweenFacts(current, next));
 

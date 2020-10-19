@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 4861167455820175303}
   - component: {fileID: 4861167455820175300}
   - component: {fileID: 4861167455820175297}
+  - component: {fileID: -5516748048884124393}
   m_Layer: 5
   m_Name: InfoBubble (MostPicked)
   m_TagString: Untagged
@@ -218,6 +219,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-5516748048884124393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861167455820175306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81f98aa0e189724a9448028a5431fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  factType: 0
+  textToUpdate: {fileID: 4861167455561094168}
 --- !u!1 &4861167456395960955
 GameObject:
   m_ObjectHideFlags: 0
