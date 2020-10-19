@@ -15,14 +15,14 @@ MonoBehaviour:
   question: Choose an answer below
   answers:
   - answer: Okay!
-    type: 1
+    type: 2
     nextQuestion: 0
   - answer: Whatever you say
-    type: 1
+    type: 2
     nextQuestion: 0
   - answer: Do I have to?
-    type: 1
+    type: 2
     nextQuestion: 0
   - answer: Fine...
-    type: 1
+    type: 2
     nextQuestion: 0
