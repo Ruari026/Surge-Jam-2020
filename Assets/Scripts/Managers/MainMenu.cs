@@ -36,6 +36,6 @@ public class MainMenu : MonoBehaviour
 
         yield return new WaitForSeconds(0.75f);
 
-        SceneManager.LoadScene("GamePlay");
+        SceneManager.LoadScene(nextScene);
     }
 }
