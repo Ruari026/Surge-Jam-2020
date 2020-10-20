@@ -10,6 +10,7 @@ public class PlatformController : MonoBehaviour
     [SerializeField]
     private float maxAngle;
 
+    private bool startSet = false;
     private Vector3 startOrientation;
     [SerializeField]
     private Text gyroTextStart;

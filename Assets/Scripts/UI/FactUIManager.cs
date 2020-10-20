@@ -14,7 +14,7 @@ public class FactUIManager : MonoBehaviour
         float marbleAmount = data.GetMostPickedAnswerPercentage();
 
         string[] split = textToUpdate.text.Split('%');
-        string s = split[0] + marbleAmount.ToString() + split[1];
-        textToUpdate.text = s;
+        string s = (marbleAmount * 100).ToString("0.00");
+        textToUpdate.text = split[0] + s + "%" + split[1];
     }
 }
