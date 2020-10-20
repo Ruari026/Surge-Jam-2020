@@ -19,4 +19,4 @@ MonoBehaviour:
     nextQuestion: -1
   - answer: Tell me one more time!
     type: 6
-    nextQuestion: -1
+    nextQuestion: -2
