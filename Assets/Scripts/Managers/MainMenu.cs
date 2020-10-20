@@ -34,15 +34,8 @@ public class MainMenu : MonoBehaviour
     {
         TransitionScreenController.instance.FadeOut();
 
-        AsyncOperation sceneLoading = SceneManager.LoadSceneAsync(nextScene);
-        sceneLoading.allowSceneActivation = false;
-
         yield return new WaitForSeconds(0.75f);
-        while (sceneLoading.progress < 0.9f)
-        {
-            yield return null;
-        }
 
-        sceneLoading.allowSceneActivation = true;
+        SceneManager.LoadScene("GamePlay");
     }
 }
