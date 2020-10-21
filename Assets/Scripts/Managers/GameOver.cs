@@ -147,6 +147,11 @@ public class GameOver : MonoBehaviour
         }
     }
 
+    private void ResetMarble(MarbleController marble)
+    {
+        marblesToSpawn.Enqueue(marble.GetMarbleType());
+    }
+
 
     /*
     ========================================================================================================================================================================================================

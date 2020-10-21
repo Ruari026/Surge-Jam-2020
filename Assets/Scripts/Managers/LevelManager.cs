@@ -55,6 +55,13 @@ public class LevelManager : MonoBehaviour
         {
             Debug.LogError("ERROR: Instance Already Exists");
         }
+
+        MarbleController.OnEventMarbleOutOfBounds += EndGame;
+    }
+
+    private void OnDisable()
+    {
+        MarbleController.OnEventMarbleOutOfBounds -= EndGame;
     }
 
     // Start is called before the first frame update
@@ -96,7 +103,7 @@ public class LevelManager : MonoBehaviour
         thePlatform.instabilityAmount *= instabilityIncreaseRate;
     }
 
-    public void EndGame()
+    public void EndGame(MarbleController marble)
     {
         SceneManager.LoadScene("Game_Over");
     }
