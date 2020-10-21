@@ -139,6 +139,13 @@ public class QuestionUIManager : MonoBehaviour
                 PersistantData.instance.AddScore(answer.type);
             }
 
+            // Reserving Special Numbers for Special Events
+            if (answer.nextQuestion == -2)
+            {
+                // Special Case for Resetting Tutorial
+                TutorialManager.instance.RestartTutorial();
+            }
+
             // Determining Next Dialogue Step
             if (answer.nextQuestion >= 0)
             {
@@ -150,7 +157,7 @@ public class QuestionUIManager : MonoBehaviour
             else
             {
                 CloseUI(true);
-            }
+            } 
         }
     }
 

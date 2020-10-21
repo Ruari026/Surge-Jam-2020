@@ -112,8 +112,7 @@ public class TutorialManager : MonoBehaviour
 
     public void RestartTutorial()
     {
-        currentSpawnTime = 0;
-        hasSpawned = false;
+        nextSpawningAudience = 0;
     }
 
     public void CheckIfEndTutorial()

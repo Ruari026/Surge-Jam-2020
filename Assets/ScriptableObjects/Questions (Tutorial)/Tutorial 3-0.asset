@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: Now you know how to play! Are you ready to do it on your own?
   answers:
-  - answer: I'm Ready
-    type: 6
-    nextQuestion: -1
   - answer: Tell me one more time!
     type: 6
     nextQuestion: -2
+  - answer: I'm ready!!!
+    type: 6
+    nextQuestion: -1
