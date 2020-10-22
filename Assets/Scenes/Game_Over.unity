@@ -1870,6 +1870,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: You choose % Nature Marbles
       objectReference: {fileID: 0}
+    - target: {fileID: 4861167455561094168, guid: ea414e3b708919745b1142ddab8c1d85,
+        type: 3}
+      propertyPath: m_FontData.m_RichText
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4861167455820175301, guid: ea414e3b708919745b1142ddab8c1d85,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4263,6 +4268,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: You choose % Nature Marbles
       objectReference: {fileID: 0}
+    - target: {fileID: 4861167455561094168, guid: ea414e3b708919745b1142ddab8c1d85,
+        type: 3}
+      propertyPath: m_FontData.m_RichText
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4861167455820175301, guid: ea414e3b708919745b1142ddab8c1d85,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5646,6 +5656,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: You choose % Nature Marbles
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861167455561094168, guid: ea414e3b708919745b1142ddab8c1d85,
+        type: 3}
+      propertyPath: m_FontData.m_RichText
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4861167455820175301, guid: ea414e3b708919745b1142ddab8c1d85,
         type: 3}
@@ -10738,6 +10753,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: You choose % Nature Marbles
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861167455561094168, guid: ea414e3b708919745b1142ddab8c1d85,
+        type: 3}
+      propertyPath: m_FontData.m_RichText
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4861167455820175301, guid: ea414e3b708919745b1142ddab8c1d85,
         type: 3}
