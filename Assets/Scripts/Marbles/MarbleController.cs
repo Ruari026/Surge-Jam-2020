@@ -26,7 +26,7 @@ public class MarbleController : MonoBehaviour
         Vector3 pos = this.transform.position;
         if (pos.y < oobPlane.position.y)
         {
-            MarbleController.OnEventMarbleOutOfBounds(this);
+            MarbleController.OnEventMarbleOutOfBounds?.Invoke(this);
             Destroy(this.gameObject);
         }
     }

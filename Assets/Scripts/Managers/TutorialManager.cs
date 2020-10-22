@@ -127,14 +127,7 @@ public class TutorialManager : MonoBehaviour
         TransitionScreenController.instance.FadeOut();
         yield return new WaitForSecondsRealtime(0.75f);
 
-        if (PersistantData.instance.HasAlreadyFinishedTutorial())
-        {
-            SceneManager.LoadScene("Main_Menu");
-        }
-        else
-        {
-            PersistantData.instance.FinishedTutorial();
-            SceneManager.LoadScene("Gameplay");
-        }
+        PersistantData.instance.FinishedTutorial();
+        SceneManager.LoadScene("Gameplay");
     }
 }
