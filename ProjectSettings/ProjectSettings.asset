@@ -248,8 +248,8 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/ruari/Desktop/FinalBuild_22-10-20/Android/MarbleousLeaders.keystore
-  AndroidKeyaliasName: finalbuild_1.0
+  AndroidKeystoreName: '{dedicated}: MarbleousLeaders.keystore'
+  AndroidKeyaliasName: marbleous leaders
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
