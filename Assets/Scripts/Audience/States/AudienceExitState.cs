@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AudienceExitState : AudienceState
 {
+    public delegate void AudienceDespawnEvent(AudienceMemberController despawningAudienceMember);
+    public static AudienceDespawnEvent OnAudienceDespawnEvent;
+
     public override void StartState(AudienceMemberController theAudienceMember)
     {
         theAudienceMember.StartCoroutine(DelayStart(theAudienceMember));
@@ -30,15 +33,11 @@ public class AudienceExitState : AudienceState
 
         yield return new WaitForSeconds(0.5f);
 
-        theAudienceMember.animController.SetTrigger("Hide");
+        theAudienceMember.spriteAnimController.SetTrigger("Hide");
 
         yield return new WaitForSeconds(0.5f);
 
+        OnAudienceDespawnEvent(theAudienceMember);
         GameObject.Destroy(theAudienceMember.gameObject);
-    }
-
-    public override void UpdateState(AudienceMemberController theAudienceMember)
-    {
-
     }
 }

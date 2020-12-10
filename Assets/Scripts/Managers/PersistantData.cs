@@ -64,6 +64,11 @@ public class PersistantData : MonoBehaviour
             false;
     }
 
+    public bool HasAlreadyFinishedTutorial()
+    {
+        return (firstLoad == 1) ? true : false;
+    }
+
     public void FinishedTutorial()
     {
         firstLoad = 1;
@@ -165,5 +170,81 @@ public class PersistantData : MonoBehaviour
         answerPercentage = percentage;
 
         return answerType;
+    }
+
+    public AnswerTypes GetMostPickedAnswerType(out int marbleAmount)
+    {
+        AnswerTypes answerType = AnswerTypes.RELATIONSHIPS;
+        if (eachMarbles == null)
+            ResetScore();
+        int answerAmount = eachMarbles[answerType];
+
+        foreach (KeyValuePair<AnswerTypes, int> pair in eachMarbles)
+        {
+            if (pair.Value > answerAmount)
+            {
+                answerType = pair.Key;
+                answerAmount = pair.Value;
+            }
+        }
+
+        marbleAmount = answerAmount;
+
+        return answerType;
+    }
+
+    public int GetMostPickedMarbleAmount()
+    {
+        AnswerTypes answerType = AnswerTypes.RELATIONSHIPS;
+        if (eachMarbles == null)
+            ResetScore();
+        int answerAmount = eachMarbles[answerType];
+
+        foreach (KeyValuePair<AnswerTypes, int> pair in eachMarbles)
+        {
+            if (pair.Value > answerAmount)
+            {
+                answerType = pair.Key;
+                answerAmount = pair.Value;
+            }
+        }
+
+        return answerAmount;
+    }
+
+    public float GetMostPickedAnswerPercentage()
+    {
+        AnswerTypes answerType = AnswerTypes.RELATIONSHIPS;
+        if (eachMarbles == null)
+            ResetScore();
+        int answerAmount = eachMarbles[answerType];
+
+        foreach (KeyValuePair<AnswerTypes, int> pair in eachMarbles)
+        {
+            if (pair.Value > answerAmount)
+            {
+                answerType = pair.Key;
+                answerAmount = pair.Value;
+            }
+        }
+
+        float percentage = (float)answerAmount / totalMarbles;
+        return percentage;
+    }
+
+
+    /*
+    ============================================================================================================================================================================================================================================================================================================
+    Persistant Data Reset
+    ============================================================================================================================================================================================================================================================================================================
+    */
+    public void ResetSavedHiScore()
+    {
+        PlayerPrefs.SetInt("HiScore", 0);
+    }
+
+    public void ResetTutorialSave()
+    {
+        PlayerPrefs.SetInt("FirstLoad", 0);
     }
 }

@@ -6,7 +6,19 @@ public class AudienceFocusedState : AudienceState
 {
     public override void StartState(AudienceMemberController theAudienceMember)
     {
-        if (QuestionUIManager.instance.OpenQuestionUI(theAudienceMember))
+        // Getting the question to show
+        if (theAudienceMember.useGlobalQuestionSet)
+        {
+            theAudienceMember.theQuestion = QuestionsManager.instance.GetQuestion();
+        }
+        else
+        {
+            int pickedQuestion = Random.Range(0, theAudienceMember.possibleStartQuestions.Length);
+            theAudienceMember.theQuestion = theAudienceMember.possibleStartQuestions[pickedQuestion];
+        }
+
+        // Showing Question To Player
+        if (QuestionUIManager.instance.OpenUI(theAudienceMember))
         {
             theAudienceMember.StartCoroutine(this.StartAnim(theAudienceMember));
         }
@@ -18,10 +30,9 @@ public class AudienceFocusedState : AudienceState
 
     private IEnumerator StartAnim(AudienceMemberController theAudienceMember)
     {
-        theAudienceMember.animController.SetTrigger("Hide");
-        
-        theAudienceMember.questionLeft.SetActive(false);
-        theAudienceMember.questionRight.SetActive(false);
+        // Animation for moving away from background
+        theAudienceMember.spriteAnimController.SetTrigger("Hide");
+        theAudienceMember.bubbleAnimController.SetTrigger("Interact");
 
         if (theAudienceMember.hasTimer)
         {
@@ -29,17 +40,30 @@ public class AudienceFocusedState : AudienceState
         }
 
         yield return new WaitForSeconds(0.5f);
+        
+        theAudienceMember.questionLeft.SetActive(false);
+        theAudienceMember.questionRight.SetActive(false);
 
+        // Moving to set position in world for asking question to the user
         Vector3 targetPos = GameObject.FindGameObjectWithTag("FocusedPoint").transform.position;
         theAudienceMember.transform.position = targetPos;
-        
+        // Changing sprite to talking sprite anim
         foreach(GameObject g in theAudienceMember.possibleIdleSprites)
         {
             g.SetActive(false);
         }
         theAudienceMember.focusedSprite.SetActive(true);
-
-        theAudienceMember.animController.SetTrigger("Show");
+        
+        // Anim for showing up to new focused position
+        theAudienceMember.spriteAnimController.SetTrigger("Show");
+        // Changing layer so that the audience member appears in front of the background fade (foreground layer == 10)
+        foreach (GameObject g in theAudienceMember.possibleIdleSprites)
+        {
+            g.layer = 10;
+        }
+        theAudienceMember.focusedSprite.layer = 10;
+        theAudienceMember.successSprite.layer = 10;
+        theAudienceMember.failSprite.layer = 10;
     }
 
     public override void UpdateState(AudienceMemberController theAudienceMember)
@@ -68,7 +92,7 @@ public class AudienceFocusedState : AudienceState
 
                 theAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
 
-                QuestionUIManager.instance.CloseQuestionUI(false);
+                QuestionUIManager.instance.CloseUI(false);
             }
         }
     }

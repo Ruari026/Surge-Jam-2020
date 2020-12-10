@@ -22,19 +22,30 @@ public class QuestionUIManager : MonoBehaviour
         }
     }
 
+    public delegate void EventDialogueFinished();
+    public static EventDialogueFinished OnEventDialogueFinished;
+
     private AudienceMemberController interactingAudienceMember;
 
-    [Header("UI Parents")]
+    [Header("General UI Elements")]
     [SerializeField]
-    private GameObject theUI;
+    private GameObject backgroundFade;
+
+    [Header("Dialogue UI Elements")]
+    [SerializeField]
+    private GameObject theDialogueUI;
+    [SerializeField]
+    private Text dialogueText;
+
+    [Header("Question UI Elements")]
+    [SerializeField]
+    private GameObject theQuestionAnswerUI;
     [SerializeField]
     private GameObject twoAnswerUI;
     [SerializeField]
     private GameObject threeAnswerUI;
     [SerializeField]
     private GameObject fourAnswerUI;
-    [SerializeField]
-    private GameObject backgroundFade;
 
     [Header("Question Timer")]
     [SerializeField]
@@ -56,6 +67,12 @@ public class QuestionUIManager : MonoBehaviour
     [SerializeField]
     private Text[] answerFourTexts;
 
+
+    /*
+    ========================================================================================================================================================================================================
+    Unity Methods
+    ========================================================================================================================================================================================================
+    */
     private void OnEnable()
     {
         if (_Instance == null)
@@ -65,37 +82,6 @@ public class QuestionUIManager : MonoBehaviour
         else
         {
             Debug.LogError("ERROR: Instance Already Exists");
-        }
-    }
-
-    public bool OpenQuestionUI(AudienceMemberController openingAudienceMember)
-    {
-        if (interactingAudienceMember == null)
-        {
-            interactingAudienceMember = openingAudienceMember;
-
-            SetUIFields(interactingAudienceMember.theQuestion);
-
-            StartCoroutine(DelayUIOpen());
-
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    
-    private IEnumerator DelayUIOpen()
-    {
-        yield return new WaitForSeconds(0.25f);
-
-        theUI.SetActive(true);
-        backgroundFade.SetActive(true);
-
-        if (hasTimer)
-        {
-            timerParent.gameObject.SetActive(true);
         }
     }
 
@@ -113,30 +99,32 @@ public class QuestionUIManager : MonoBehaviour
         }
     }
 
-    public void CloseQuestionUI(bool questionAnswered)
-    {
-        // Audience Member Handling
-        if (interactingAudienceMember != null)
-        {
-            interactingAudienceMember.success = true;
-            interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
-            interactingAudienceMember = null;
-        }
-        
-        if (questionAnswered)
-        {
-            // Add a marble
-            MarbleSpawner.instance.SpawnMarble();
-            PersistantData.instance.AddScore();
-        }
 
-        // Close UI
-        theUI.SetActive(false);
-        backgroundFade.SetActive(false);
-        timerParent.SetActive(false);
+    /*
+    ========================================================================================================================================================================================================
+    UI Access (General Opening & Closing)
+    ========================================================================================================================================================================================================
+    */
+    public bool OpenUI(AudienceMemberController openingAudienceMember)
+    {
+        // Preventing a new audience member from interacting with the UI if another is already focused
+        if (interactingAudienceMember == null)
+        {
+            interactingAudienceMember = openingAudienceMember;
+
+            // Set has answer options so open up question answer UI
+            UpdateUI(interactingAudienceMember.theQuestion);
+            StartCoroutine(DelayUIOpen(interactingAudienceMember.theQuestion));
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    public void CloseQuestionUI(int answerNumber)
+    public void UIInteract(int answerNumber)
     {
         // Audience Member Handling
         if (interactingAudienceMember != null)
@@ -151,39 +139,107 @@ public class QuestionUIManager : MonoBehaviour
                 PersistantData.instance.AddScore(answer.type);
             }
 
+            // Reserving Special Numbers for Special Events
+            if (answer.nextQuestion == -2)
+            {
+                // Special Case for Resetting Tutorial
+                TutorialManager.instance.RestartTutorial();
+            }
+
             // Determining Next Dialogue Step
             if (answer.nextQuestion >= 0)
             {
                 // Load Next Question Answer Set
                 int nextQuestion = interactingAudienceMember.theQuestion.answers[answerNumber].nextQuestion;
                 QuestionAnswersScriptableObject nextSet = interactingAudienceMember.possibleProgressionQuestions[nextQuestion];
-
-                interactingAudienceMember.theQuestion = nextSet;
-
-                SetUIFields(interactingAudienceMember.theQuestion);
+                ProgressUI(nextSet);
             }
             else
             {
-                // End of dialogue tree
-                interactingAudienceMember.success = true;
-                interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
-
-                interactingAudienceMember = null;
-
-                // Close UI
-                theUI.SetActive(false);
-                backgroundFade.SetActive(false);
-                timerParent.SetActive(false);
-            }
+                CloseUI(true);
+            } 
         }
-            
     }
 
-    public void SetUIFields(QuestionAnswersScriptableObject set)
+    private void ProgressUI(QuestionAnswersScriptableObject nextSet)
+    {
+        interactingAudienceMember.theQuestion = nextSet;
+
+        // Closing Existing UI
+        theQuestionAnswerUI.SetActive(false);
+        theDialogueUI.SetActive(false);
+
+        // Checking if the next UI needs to be question answer or general dialogue
+        UpdateUI(interactingAudienceMember.theQuestion);
+
+        // Showing relevant UI
+        if (nextSet.answers.Length > 1)
+        {
+            theQuestionAnswerUI.SetActive(true);
+        }
+        else
+        {
+            theDialogueUI.SetActive(true);
+        }
+        backgroundFade.SetActive(true);
+
+        if (hasTimer)
+        {
+            timerParent.gameObject.SetActive(true);
+        }
+    }
+
+    public void CloseUI(bool questionAnswered)
+    {
+        // End of dialogue tree
+        interactingAudienceMember.success = questionAnswered;
+        interactingAudienceMember.ChangeState(AudienceStates.AUDIENCE_EXIT);
+
+        interactingAudienceMember = null;
+
+        // Close All UI
+        theQuestionAnswerUI.SetActive(false);
+        theDialogueUI.SetActive(false);
+
+        backgroundFade.SetActive(false);
+        timerParent.SetActive(false);
+
+        OnEventDialogueFinished?.Invoke();
+    }
+
+
+    /*
+    ========================================================================================================================================================================================================
+    Handling Question Answer Sets
+    ========================================================================================================================================================================================================
+    */
+    private IEnumerator DelayUIOpen(QuestionAnswersScriptableObject set)
+    {
+        yield return new WaitForSeconds(0.75f);
+
+        if (set.answers.Length > 1)
+        {
+            theQuestionAnswerUI.SetActive(true);
+        }
+        else
+        {
+            theDialogueUI.SetActive(true);
+        }
+        backgroundFade.SetActive(true);
+
+        if (hasTimer)
+        {
+            timerParent.gameObject.SetActive(true);
+        }
+    }
+
+    private void UpdateUI(QuestionAnswersScriptableObject set)
     {
         // Updating UI For Question
         questionText.text = set.question;
+        dialogueText.text = set.question;
 
+        // Answer Option UI's
         for (int i = 0; i < set.answers.Length; i++)
         {
             switch (i)
@@ -210,11 +266,12 @@ public class QuestionUIManager : MonoBehaviour
             }
         }
 
-        // Showing Relevant UI
+        // Reset All UI's
         twoAnswerUI.SetActive(false);
         threeAnswerUI.SetActive(false);
         fourAnswerUI.SetActive(false);
 
+        // Showing Relevant UI
         switch (set.answers.Length)
         {
             case 2:

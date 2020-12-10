@@ -11,6 +11,9 @@ public class MarbleController : MonoBehaviour
     [SerializeField]
     private Transform oobPlane;
 
+    public delegate void EventMarbleOutOfBounds(MarbleController marble);
+    public static EventMarbleOutOfBounds OnEventMarbleOutOfBounds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +26,8 @@ public class MarbleController : MonoBehaviour
         Vector3 pos = this.transform.position;
         if (pos.y < oobPlane.position.y)
         {
-            LevelManager.instance.EndGame();
+            MarbleController.OnEventMarbleOutOfBounds?.Invoke(this);
+            Destroy(this.gameObject);
         }
     }
 
@@ -65,5 +69,10 @@ public class MarbleController : MonoBehaviour
                 break;
         }
         this.GetComponent<Renderer>().material = pickedMaterial;
+    }
+
+    public AnswerTypes GetMarbleType()
+    {
+        return this.marbleType;
     }
 }

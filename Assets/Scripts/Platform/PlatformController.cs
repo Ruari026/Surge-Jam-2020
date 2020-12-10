@@ -10,6 +10,7 @@ public class PlatformController : MonoBehaviour
     [SerializeField]
     private float maxAngle;
 
+    private bool startSet = false;
     private Vector3 startOrientation;
     [SerializeField]
     private Text gyroTextStart;
@@ -33,9 +34,13 @@ public class PlatformController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (startOrientation.magnitude < 0.1f)
+        {
+            ResetGyro();
+        }
+
         // Handling Instability
         Vector3 instabilityDirection = new Vector3();
-
         instabilityDirection.x = Mathf.PerlinNoise(Time.realtimeSinceStartup, 0);
         instabilityDirection.x = (instabilityDirection.x * 2) - 1;
         instabilityDirection.x = (instabilityDirection.x * instabilityAmount);
